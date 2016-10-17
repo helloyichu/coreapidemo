@@ -1,0 +1,31 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "searchParties",
+	"description": "Core schema for search parties",
+	"type": "object",
+	"oneOf": [
+		{
+			"description": "Parties Search",
+			"type": "object",
+			"properties": {
+				"recCtrlOut": {
+					"$ref": "commonSchemaV1_0.json#/definitions/recCtrlOut"
+				},
+				"partiesList": {
+					"description": "List of Parties",
+					"type": "array",
+					"items": [
+						{
+							"$ref": "partiesSearchResultSchemaV1_0.json#/definitions/searchResult"
+						}
+					],
+					"additionalItems": false
+				}
+			},
+			"additionalProperties": false
+		},
+		{
+			"$ref": "errorSchemaV1_0.json#/definitions/error"
+		}
+	]
+}

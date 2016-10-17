@@ -1,0 +1,32 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Definition of Corporate Party Search Result",
+	"definitions": {
+		"partyCorporate": {
+			"description": "Corporate Party's details",
+			"type": "object",
+			"properties": {
+				"partyName": {
+					"$ref": "commonSchemaV1_0.json#/definitions/partyName"
+				},
+				"partyType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/partyType"
+				},
+				"partyEntityType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/partyEntityType"
+				},
+				"incorporationCtry": {
+					"$ref": "commonSchemaV1_0.json#/definitions/incorporationCtry"
+				},
+				"incorporationCtryDesc": {
+					"description": "Country of incorporation description",
+					"type": "string"
+				},
+				"incorporationDate": {
+					"$ref": "commonSchemaV1_0.json#/definitions/incorporationDate"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

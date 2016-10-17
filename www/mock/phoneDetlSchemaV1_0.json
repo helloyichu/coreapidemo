@@ -1,0 +1,57 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Phone details",
+	"definitions": {
+		"phoneDetl": {
+			"type": "object",
+			"properties": {
+				"phoneInternalId": {
+					"description": "Phone internal identifier",
+					"type": "string"
+				},
+				"phone": {
+                    "$ref": "commonSchemaV1_0.json#/definitions/phone"
+				},
+				"contactName": {
+					"description": "Name of contact",
+					"type": "string"
+				},
+				"isPrefPhone": {
+					"description": "Indicates this is preferred phone for communication purpose",
+					"type": "boolean"
+				},
+				"phoneUsage": {
+					"description": "Indicates purpose associated with this phone",
+					"type": "string"
+				},
+				"isDoNotSpam": {
+					"description": "Indicates if the email address/mobile phone can be used for sending of promotional materials, true-cannot be used for promotional materials (i.e. for official communications only)",
+					"type": "boolean"
+				},
+				"lastUpdDate": {
+					"description": "Date of last update",
+					"type": "string",
+					"format": "date"
+				},
+				"lastUpdTime": {
+					"description": "Time of last update",
+					"type": "string",
+					"format": "time"
+				},
+				"lastUpdMainUnit": {
+					"description": "Business unit of last update officer",
+					"type": "string"
+				},
+				"lastUpdId": {
+					"description": "last update officer identifier",
+					"type": "string"
+				},
+				"unformatPhoneNumber": {
+					"description": "Unformatted Telephone number",
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

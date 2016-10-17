@@ -1,0 +1,15 @@
+<ion-view view-title="Accounts">
+  <ion-nav-buttons side="secondary">
+    <button class="button" ng-click="openAddAccountDLG()" >
+      <i class="icon ion-plus"></i>
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="product in playlists.partiesProducts.productsList.item" ng-if="product.depositAccount" href="#/app/playlists/{{product.depositAccount.accountId}}">
+        {{product.depositAccount.productDesc}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

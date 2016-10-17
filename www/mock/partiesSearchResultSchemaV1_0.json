@@ -1,0 +1,213 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "http://www.xxx.com.sg/api/v1/searchPartiesResults",
+	"description": "Parties Search Result",
+	"definitions": {
+		"searchResult": {
+			"description": "Search results",
+			"type": "object",
+			"properties": {
+				"partyInternalId": {
+					"description": "Party Internal Identifier",
+					"type": "object",
+					"oneOf": [
+						{
+							"$ref": "commonSchemaV1_0.json#/definitions/CISInternalId"
+						},
+						{
+							"$ref": "commonSchemaV1_0.json#/definitions/partyInternalId"
+						}
+					]
+				},
+				"altPartyInternalId": {
+					"$ref": "commonSchemaV1_0.json#/definitions/altPartyInternalId"
+				},
+				"partyDoc": {
+					"description": "Details of party's identification documents",
+					"type": "array",
+					"maxItems": 10,
+					"items": [
+						{
+							"$ref": "commonSchemaV1_0.json#/definitions/partyDoc"
+						}
+					],
+					"additionalItems": false
+				},
+				"partyId": {
+					"$ref": "commonSchemaV1_0.json#/definitions/partyId"
+				},
+				"partyDetl": {
+					"description": "Party's details",
+					"type": "object",
+					"oneOf": [
+						{
+							"description": "Retail Party's details",
+							"type": "object",
+							"properties": {
+								"partyRetail": {
+									"$ref": "partiesSearchRetailSchemaV1_0.json#/definitions/partyRetail"
+								}
+							},
+							"additionalProperties": false
+						},
+						{
+							"description": "Corporate Party's details",
+							"type": "object",
+							"properties": {
+								"partyCorporate": {
+									"$ref": "partiesSearchCorporateSchemaV1_0.json#/definitions/partyCorporate"
+								}
+							},
+							"additionalProperties": false
+						}
+					]
+				},
+				"phoneDetl": {
+					"description": "Phone details",
+					"type": "array",
+					"items": [
+						{
+							"type": "object",
+							"properties": {
+								"phoneInternalId": {
+									"$ref": "commonSchemaV1_0.json#/definitions/phoneInternalId"
+								},
+								"phone": {
+									"$ref": "commonSchemaV1_0.json#/definitions/phone"
+								},
+								"isPrefPhone": {
+									"$ref": "commonSchemaV1_0.json#/definitions/isPrefPhone"
+								},
+								"phoneUsage": {
+									"$ref": "commonSchemaV1_0.json#/definitions/phoneUsage"
+								},
+								"isDoNotSpam": {
+									"$ref": "commonSchemaV1_0.json#/definitions/isDoNotSpam"
+								},
+								"lastUpdDate": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+								},
+								"lastUpdTime": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdTime"
+								},
+								"lastUpdMainUnit": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdMainUnit"
+								},
+								"lastUpdId": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdId"
+								}
+							},
+							"additionalProperties": false
+						}
+					],
+					"additionalItems": false
+				},
+				"emailDetl": {
+					"description": "Email details",
+					"type": "array",
+					"items": [
+						{
+							"type": "object",
+							"properties": {
+								"emailInternalId": {
+									"$ref": "commonSchemaV1_0.json#/definitions/emailInternalId"
+								},
+								"emailAddressDetl": {
+									"$ref": "commonSchemaV1_0.json#/definitions/emailAddressDetl"
+								},
+								"isPrefEmail": {
+									"$ref": "commonSchemaV1_0.json#/definitions/isPrefEmail"
+								},
+								"isDoNotSpam": {
+									"$ref": "commonSchemaV1_0.json#/definitions/isDoNotSpam"
+								},
+								"emailSourceDesc": {
+									"$ref": "commonSchemaV1_0.json#/definitions/emailSourceDesc"
+								},
+								"isEmailVerified": {
+									"$ref": "commonSchemaV1_0.json#/definitions/isEmailVerified"
+								},
+								"lastUpdDate": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+								},
+								"lastUpdTime": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdTime"
+								},
+								"lastUpdMainUnit": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdMainUnit"
+								},
+								"lastUpdId": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdId"
+								}
+							},
+							"additionalProperties": false
+						}
+					],
+					"additionalItems": false
+				},
+				"partyStatusDetl": {
+					"description": "Party status details",
+					"type": "array",
+					"items": [
+						{
+							"type": "object",
+							"properties": {
+								"partyStatus": {
+									"$ref": "commonSchemaV1_0.json#/definitions/partyStatus"
+								},
+								"partyStatusDesc": {
+									"description": "Party status description",
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						}
+					],
+					"additionalItems": false
+				},
+				"partySegmentDetl": {
+					"description": "Party grouping/segmentation details",
+					"type": "object",
+					"properties": {
+						"segmentLevel1": {
+							"$ref": "commonSchemaV1_0.json#/definitions/segmentLevel1"
+						},
+						"segmentLevel2": {
+							"$ref": "commonSchemaV1_0.json#/definitions/segmentLevel2"
+						},
+						"segmentLevel3": {
+							"$ref": "commonSchemaV1_0.json#/definitions/segmentLevel3"
+						},
+						"segmentLevel4": {
+							"$ref": "commonSchemaV1_0.json#/definitions/segmentLevel4"
+						}
+					},
+					"additionalProperties": false
+				},
+				"officerDetl": {
+					"description": "Details of Officer-in-charge",
+					"type": "object",
+					"properties": {
+						"officerType": {
+							"$ref": "commonSchemaV1_0.json#/definitions/officerType"
+						},
+						"officerId": {
+							"$ref": "commonSchemaV1_0.json#/definitions/officerId"
+						},
+						"officerName": {
+							"$ref": "commonSchemaV1_0.json#/definitions/officerName"
+						},
+						"officerUnit": {
+							"$ref": "commonSchemaV1_0.json#/definitions/officerUnit"
+						},
+						"officerContact": {
+							"$ref": "commonSchemaV1_0.json#/definitions/officerContact"
+						}
+					},
+					"additionalProperties": false
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

@@ -1,0 +1,47 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Schema for investment related details",
+	"definitions": {
+		"investmentRelated": {
+			"description": "Investment Related details",
+			"type": "object",
+			"properties": {
+				"CDPAccount": {
+					"description": "Account with Central Depository of Securities",
+					"type": "string"
+				},
+				"FNADetl": {
+					"description": "Financial Needs Analysis details",
+					"type": "object",
+					"properties": {
+						"isProInvestor": {
+							"description": "Indicates if party is a professional investor",
+							"type": "boolean"
+						},
+						"proInvestorDate": {
+							"description": "Date of becoming professional investor",
+							"type": "string",
+							"format": "date"
+						},
+						"proInvestorReviewDate": {
+							"description": "Review date of professional investor status",
+							"type": "string",
+							"format": "date"
+						},
+						"proInvestorExpiryDate": {
+							"description": "Expiry date of professional investor status",
+							"type": "string",
+							"format": "date"
+						},
+						"isDerivativeKnowledge": {
+							"description": "Indicates if party has derivate knowledge",
+							"type": "boolean"
+						}
+					},
+					"additionalProperties": false
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

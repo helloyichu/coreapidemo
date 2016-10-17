@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Common Header",
+  "definitions": {
+    "commonDetl": {
+	  "description": "Common details to be provided by API consumer",
+	  "type": "object",
+      "properties": {
+        "trailDetl": {
+	      "description": "Trail details",
+          "type": "object",
+          "properties": {
+            "operatorId": {
+              "description": "Operator Identifier",
+              "type": "string"
+            },
+            "operatorDateTime": {
+              "description": "Operator Date and Time",
+              "type": "string",
+		      "format": "date-time"
+            },
+		    "operatorMainUnit": {
+              "description": "Operator Main Organization Unit",
+              "type": "string"
+            },
+		    "operatorSubUnit": {
+              "description": "Operator Sub Organization Unit",
+              "type": "string"
+            },
+		    "processingMainUnit": {
+              "description": "Processing Main Organization Unit",
+              "type": "string"
+            },
+		    "processingSubUnit": {
+              "description": "Processing Sub Organization Unit",
+              "type": "string"
+            },
+		    "authorizationDetl": {
+			  "type": "array",
+			  "maxItems": 2,
+			  "items": [
+			    {
+				  "type": "object",
+				  "properties": {
+				    "authorizerId": {
+					  "description": "Authorizing officer id",
+					  "type": "string"
+				    },
+				    "AuthorizedDateTime": {
+				      "description": "Authorizing date and time",
+					  "type": "string",
+					  "format": "date-time"
+				    },
+		            "authorizerMainUnit": {
+                      "description": "Main Organisation Unit of authorizing officer",
+                      "type": "string"
+                    },
+		            "authorizerSubUnit": {
+                      "description": "Sub Organization Unit of authorizing officer",
+                      "type": "string"
+                    }
+				  },
+				    "additionalProperties": false
+			    }
+			  ],
+		   	    "additionalItems": false
+		    }
+          },
+	  	    "additionalProperties": false
+        },
+		"overrideDetl": {
+			"description": "Override details",
+			"type": "array",
+			"maxItems": 5,
+			"items": [
+				{
+					"type": "object",
+					"properties": {
+						"overrideReason": {
+							"description": "Override Reason",
+							"type": "string"
+						},
+						"overrideReasonDesc": {
+							"description": "Override Reason Description",
+							"type": "string"
+						},
+						"usageCount": {
+							"description": "Number of times the same contact information is/can be used for a given purpose",
+							"type": "integer"
+						}
+					},
+					"additionalProperties": false
+				}
+			],
+			"additionalItems": false
+		},
+		"overrideAuthorizationDetl": {
+			"description": "Override Authorization details",
+			"type": "array",
+			"maxItems": 2,
+			"items": [
+				{
+					"type": "object",
+					"properties": {
+						"overrideId": {
+							"description": "Officer who authorized the override",
+							"type": "string"
+						},
+						"overrideDateTime": {
+							"description": "Date and time when overriding is authoized",
+							"type": "string",
+							"format": "date-time"
+						},
+						"overrideMainUnit": {
+							"description": "Main Organisation Unit of overriding authorizer",
+							"type": "string"
+						},
+						"overrideSubUnit": {
+							"description": "Sub Organization Unit of overriding authorizer",
+							"type": "string"
+						}
+					},
+					"additionalProperties": false
+				}
+			],
+			"additionalItems": false
+		},		
+		"warn": {
+		    "$ref": "errorSchemaV1_0.json#/definitions/warn"
+		}
+      },
+	    "additionalProperties": false
+	}
+  }
+}

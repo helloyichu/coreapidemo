@@ -1,0 +1,60 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Core schema Alert Service details",
+	"definitions": {
+		"alertServiceDetl": {
+			"description": "Alert service details",
+			"type": "object",
+			"properties": {
+				"alerts": {
+					"description": "Alerts",
+					"type": "array",
+					"items": [
+						{
+							"type": "object",
+							"properties": {
+								"alertServiceType": {
+									"description": "Alert service type",
+									"type": "string"
+								},
+								"alertServiceTypeDesc": {
+									"description": "Alert service type description",
+									"type": "string"
+								},
+								"alertServiceCategory": {
+									"description": "Alert service category",
+									"type": "string"
+								},
+								"alertServiceCategortDesc": {
+									"description": "Alert service category description",
+									"type": "string"
+								},
+								"alertServiceSubCategory": {
+									"description": "Alert service sub category",
+									"type": "string"
+								},
+								"alertServiceSubCategoryDesc": {
+									"description": "Alert service sub category description",
+									"type": "string"
+								},
+								"contactModeDetl": {
+									"description": "contactModeDetl",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"additionalProperties": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"additionalProperties": false
+						}
+					],
+					"additionalItems": false
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

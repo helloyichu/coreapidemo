@@ -1,0 +1,96 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"oneOf": [
+		{
+			"title": "parties",
+			"description": "parties",
+			"type": "object",
+			"properties": {
+				"commonDetl": {
+					"$ref": "commonHeaderSchemaV1_0.json#/definitions/commonDetl"
+				},
+				"partyId": {
+					"$ref": "commonSchemaV1_0.json#/definitions/partyId"
+				},
+				"partyDoc": {
+					"description": "Details of party's identification documents",
+					"type": "array",
+					"maxItems": 10,
+					"items": [
+						{
+							"$ref": "commonSchemaV1_0.json#/definitions/partyDoc"
+						}
+					],
+					"additionalItems": false
+				},
+				"partyInternalId": {
+					"description": "Party Internal Identifier",
+					"type": "object",
+					"oneOf": [
+						{
+							"$ref": "commonSchemaV1_0.json#/definitions/CISInternalId"
+						},
+						{
+							"$ref": "commonSchemaV1_0.json#/definitions/partyInternalId"
+						}
+					]
+				},
+				"altPartyInternalId": {
+					"$ref": "commonSchemaV1_0.json#/definitions/altPartyInternalId"
+				},
+				"partyDetl": {
+					"description": "Party Demographics Details",
+					"type": "object",
+					"oneOf": [
+						{
+							"description": "Retail Party details",
+							"type": "object",
+							"properties": {
+								"partyRetail": {
+									"$ref": "partyRetailSchemaV1_0.json#/definitions/partyRetail"
+								}
+							},
+							"additionalProperties": false
+						},
+						{
+							"description": "Corporate Party details",
+							"type": "object",
+							"properties": {
+								"partyCorporate": {
+									"$ref": "partyCorporateSchemaV1_0.json#/definitions/partyCorporate"
+								}
+							},
+							"additionalProperties": false
+						}
+					]
+				},
+				"contacts": {
+					"$ref": "contactsDetlSchemaV1_0.json#/definitions/contactDetl"
+				},
+				"partyStatusRelated": {
+					"$ref": "partyStatusRelatedSchemaV1_0.json#/definitions/partyStatusRelated"
+				},
+				"partyClassification": {
+					"$ref": "partyClassificationSchemaV1_0.json#/definitions/partyClassification"
+				},
+				"partyRiskScoreDetl": {
+					"$ref": "partyRiskScoreDetlSchemaV1_0.json#/definitions/partyRiskScoreDetl"
+				},
+				"taxRelated": {
+					"$ref": "taxRelatedSchemaV1_0.json#/definitions/taxRelated"
+				},
+				"investmentRelated": {
+					"$ref": "investmentRelatedSchemaV1_0.json#/definitions/investmentRelated"
+				},				
+				"addnlInformation": {
+					"$ref": "addnlInformationSchemaV1_0.json#/definitions/addnlInformation"
+				}
+			},
+			"additionalProperties": false
+		},
+		{
+			"$ref": "errorSchemaV1_0.json#/definitions/error"
+		}
+	]
+}

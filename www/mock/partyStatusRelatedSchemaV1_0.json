@@ -1,0 +1,51 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Schema for Party Status Related details",
+	"definitions": {
+		"partyStatusRelated": {
+			"description": "Party Status Related details",
+		    "type": "object",
+		    "properties": {
+				"partyStatusDetl": {
+					"description": "Party's status details",
+					"type": "array",
+					"items": [
+						{
+							"type": "object",
+							"properties": {
+								"partyStatus": {
+									"description": "Party Status",
+									"type": "string"
+								},
+								"partyStatusDesc": {
+									"description": "Party Status Description",
+									"type": "string"
+								},
+								"statusReasonCode": {
+									"description": "Party Status Reason code eg Suspension Code",
+									"type": "string"
+								},
+								"statusReasonDesc": {
+									"description": "Party Status Reason Description",
+									"type": "string"
+								},
+								"partyStatusDate": {
+									"description": "Party Status Date Time",
+									"type": "string",
+									"format": "date-time"
+								},
+								"partyStatusRemarks": {
+									"description": "Remarks for party status tagging",
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						}
+					],
+					"additionalItems": false
+				}
+			},
+			   "additionalProperties": false
+		}
+	}
+}

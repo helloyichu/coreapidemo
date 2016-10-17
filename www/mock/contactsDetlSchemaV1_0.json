@@ -1,0 +1,47 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Schema for Contacts details",
+	"definitions": {
+		"contactDetl": {
+		    "description": "Contacts details",
+		    "type": "object",
+		    "properties": {
+				"phoneDetl": {
+					"description": "Phone and preference details",
+					"type": "array",
+					"items": [
+						{
+							"$ref": "phoneDetlSchemaV1_0.json#/definitions/phoneDetl"
+						}
+					],
+					"additionalItems": false
+				},
+				"emailDetl": {
+					"description": "Email and preference details",
+					"type": "array",
+					"items": [
+						{
+							"$ref": "emailDetlSchemaV1_0.json#/definitions/emailDetl"
+						}
+					],
+					"additionalItems": false					
+				},
+				"partyAddressDetl": {
+					"description": "Party's address details",
+					"type": "array",
+					"items": [
+						{
+							"$ref": "partyAddressDetlSchemaV1_0.json#/definitions/partyAddressDetl"
+						}
+					],
+					"additionalItems": false					
+				},
+				"telex": {
+					"description": "Telex adddess",
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+        }
+    }
+}

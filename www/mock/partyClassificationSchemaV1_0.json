@@ -1,0 +1,108 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Schema for Party Classification",
+	"definitions": {
+		"partyClassification": {
+			"description": "Party Classification/Segmentation",
+		    "type": "object",
+		    "properties": {
+				"partySegment": {
+					"description": "Party Segment",
+					"type": "string"
+				},
+				"partyOwnerDetl": {
+					"description": "Party Owner Details",
+					"type": "array",
+					"maxItems": 5,
+					"items": [
+						{
+							"type": "object",
+							"properties": {
+								"partyOwner": {
+									"description": "Party owning department or group",
+									"type": "string"
+								},
+								"partyOwnerDesc": {
+									"description": "Party owning department or group description",
+									"type": "string"
+								},
+								"partySegmentDetl": {
+									"description": "Party grouping/segmentation details",
+									"type": "object",
+									"properties": {
+										"segmentLevel1": {
+											"$ref": "commonSchemaV1_0.json#/definitions/segmentLevel1"
+										},
+										"segmentLevel1Desc": {
+											"description": "Party segmentation level 1 description",
+											"type": "string"
+										},
+										"segmentLevel2": {
+											"$ref": "commonSchemaV1_0.json#/definitions/segmentLevel2"
+										},
+										"segmentLevel2Desc": {
+											"description": "Party segmentation level 2 description",
+											"type": "string"
+										},
+										"segmentLevel3": {
+											"$ref": "commonSchemaV1_0.json#/definitions/segmentLevel3"
+										},
+										"segmentLevel3Desc": {
+											"description": "Party segmentation level 3 description",
+											"type": "string"
+										},
+										"segmentLevel4": {
+											"$ref": "commonSchemaV1_0.json#/definitions/segmentLevel4"
+										},
+										"segmentLevel4Desc": {
+											"description": "Party segmentation level 4 description",
+											"type": "string"
+										}
+									},
+									"additionalProperties": false
+								},
+								"officerDetl": {
+									"description": "Details of Officer-in-charge",
+									"type": "array",
+									"maxItems": 5,
+									"items": [
+										{
+											"type": "object",
+											"properties": {
+												"officerType": {
+													"$ref": "commonSchemaV1_0.json#/definitions/officerType"
+												},
+												"officerId": {
+													"$ref": "commonSchemaV1_0.json#/definitions/officerId"
+												},
+												"officerName": {
+													"$ref": "commonSchemaV1_0.json#/definitions/officerName"
+												},
+												"officerUnit": {
+													"$ref": "commonSchemaV1_0.json#/definitions/officerUnit"
+												},
+												"officerContact": {
+													"$ref": "commonSchemaV1_0.json#/definitions/officerContact"
+												}
+											},
+											"additionalProperties": false
+										}
+									],
+									"additionalItems": false
+								},
+								"relationshipStartDate": {
+									"description": "Relationship start date and time",
+									"type": "string",
+									"format": "date-time"
+								}
+							},
+							"additionalProperties": false
+						}
+					],
+					"additionalItems": false
+				}
+			},
+			   "additionalProperties": false
+		}
+	}
+}

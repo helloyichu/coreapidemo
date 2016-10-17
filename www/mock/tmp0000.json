@@ -1,0 +1,885 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Common Schema",
+	"definitions": {
+		"accountCur": {
+			"description": "Account Currency",
+			"type": "string"
+		},
+		"accountId": {
+			"description": "Tokenised Account Identifier",
+			"type": "string"
+		},
+		"accountName": {
+			"description": "Account Name",
+			"type": "string"
+		},
+		"accountNumber": {
+			"description": "Account Number",
+			"type": "string"
+		},
+		"accountType": {
+			"description": "Account Type",
+			"type": "string"
+		},
+		"accountSignal": {
+			"description": "Account Signal",
+			"type": "string"
+		},
+		"accountSignalReason": {
+			"description": "Account Signal Reason",
+			"type": "string"
+		},
+		"accountSignatoryType": {
+			"description": "Account Signatory Type",
+			"type": "string"
+		},
+		"accountStatus": {
+			"description": "Account Status",
+			"type": "string"
+		},
+		"accountStatusReason": {
+			"description": "Account status reason",
+			"type": "string"
+		},
+		"accountStatusDate": {
+			"description": "Account status date",
+			"type": "string",
+			"format": "date"
+		},
+		"actor": {
+			"description": "System where the error or warning is detected.",
+			"type": "string"
+		},
+		"additionalInfo": {
+			"description": "Additional Information",
+			"type": "string"
+		},
+		"address": {
+			"description": "Address",
+			"type": "object",
+			"properties": {
+				"addressLine1": {
+					"description": "Street address line 1",
+					"type": "string"
+				},
+				"addressLine2": {
+					"description": "Street address line 2",
+					"type": "string"
+				},
+				"addressLine3": {
+					"description": "Street address line 3",
+					"type": "string"
+				},
+				"addressLine4": {
+					"description": "Street address line 4",
+					"type": "string"
+				},
+				"addressLine5": {
+					"description": "Street address line 5",
+					"type": "string"
+				},
+				"building": {
+					"description": "Building name",
+					"type": "string"
+				},
+				"block": {
+					"description": "Block number",
+					"type": "string"
+				},
+				"level": {
+					"description": "Level number",
+					"type": "string"
+				},
+				"unit": {
+					"description": "Unit number",
+					"type": "string"
+				},
+				"postalCode": {
+					"description": "Postal code/zip",
+					"type": "string"
+				},
+				"estate": {
+					"description": "Estate",
+					"type": "string"
+				},
+				"city": {
+					"description": "City",
+					"type": "string"
+				},
+				"district": {
+					"description": "District",
+					"type": "string"
+				},
+				"stateProvince": {
+					"description": "State/Province",
+					"type": "string"
+				},
+				"ctry": {
+					"description": "Country Code (ISO 3166-1 Country Code)",
+					"type": "string",
+					"maxLength": 3
+				},
+				"ctryDesc": {
+					"description": "Country Description",
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
+		"addressInternalId": {
+			"description": "Address internal identifier",
+			"type": "string"
+		},
+		"addressType": {
+			"description": "Address type",
+			"type": "string"
+		},
+		"altPartyInternalId": {
+			"description": "Alternate Party Internal Identifier",
+			"type": "string"
+		},
+		"amount": {
+			"description": "Amount",
+			"type": "object",
+			"properties": {
+				"amount": {
+					"description": "Amount",
+					"type": "number"
+				},
+				"currency": {
+					"description": "Currency",
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
+		"availBal": {
+			"description": "Available Balance",
+			"$ref": "#/definitions/amount"
+		},
+		"availableFundUnit": {
+			"description": "Number of fund units available",
+			"type": "number"
+		},
+		"bankId": {
+			"description": "Bank Identifier",
+			"type": "string"
+		},
+		"bidPrice": {
+			"description": "Number of fund units available",
+			"type": "number"
+		},
+		"bidPriceDate": {
+			"description": "Date of Bid Price",
+			"type": "string",
+			"format": "date"
+		},
+		"birthCtry": {
+			"description": "Country of Birth (ISO 3166-1 Country Code)",
+			"type": "string",
+			"maxLength": 3
+		},
+		"birthDate": {
+			"description": "Date of Birth",
+			"type": "string",
+			"format": "date"
+		},
+		"birthPlace": {
+			"description": "Place of Birth",
+			"type": "string"
+		},
+		"blockCode": {
+			"description": "Block code",
+			"type": "string"
+		},
+		"blockCodeDate": {
+			"description": "Date block code was assigned",
+			"type": "string",
+			"format": "date"
+		},
+		"BOA": {
+			"description": "Branch Of Account",
+			"type": "string"
+		},
+		"cardId": {
+			"description": "Tokenised Card Identifier",
+			"type": "string"
+		},
+		"cardBrand": {
+			"description": "Type of card",
+			"type": "string"
+		},
+		"cardType": {
+			"description": "Code to represent the type of card",
+			"type": "string"
+		},
+		"channelId": {
+			"description": "Channel Identifier",
+			"type": "string"
+		},
+		"CISInternalId": {
+			"description": "Customer Internal Identifier (CIS)",
+			"type": "object",
+			"properties": {
+				"CISCIN": {
+					"description": "CIS Customer Identification Number",
+					"type": "string"
+				},
+				"CISCINSfx": {
+					"description": "CIS CIN Suffix",
+					"type": "string",
+					"maxlength": 2
+				}
+			},
+			"additionalProperties": false
+		},
+		"closeDate": {
+			"description": "Account closing date",
+			"type": "string",
+			"format": "date"
+		},
+		"contactName": {
+			"description": "Name of contact",
+			"type": "string"
+		},
+		"earmarkAmount": {
+			"description": "Earmark amount and currency",
+			"type": "object",
+			"properties": {
+				"amount": {
+					"$ref": "#/definitions/amount"
+				}
+			},
+			"additionalProperties": false
+		},
+		"effectiveDate": {
+			"description": "Effective Date",
+			"type": "string",
+			"format": "date"
+		},
+		"dateRange": {
+			"description": "Date Range",
+			"type": "object",
+			"properties": {
+				"startDate": {
+					"description": "Start Date",
+					"type": "string"
+				},
+				"endDate": {
+					"description": "End Date",
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
+		"emailAddress": {
+			"description": "Email address or URL",
+			"type": "string"
+		},
+		"emailAddressDetl": {
+			"description": "Email details",
+			"type": "object",
+			"properties": {
+				"emailAddressType": {
+					"$ref": "#/definitions/emailAddressType"
+				},
+				"emailAddress": {
+					"$ref": "#/definitions/emailAddress"
+				},
+				"effectiveDate": {
+					"$ref": "#/definitions/effectiveDate"
+				},
+				"expiryDate": {
+					"$ref": "#/definitions/expiryDate"
+				}
+			},
+			"additionalProperties": false
+		},
+		"emailAddressType": {
+			"description": "Email address type",
+			"type": "string"
+		},
+		"emailInternalId": {
+			"description": "Email internal identifier",
+			"type": "string"
+		},
+		"emailSourceDesc": {
+			"description": "Source of email",
+			"type": "string"
+		},
+		"expiryDate": {
+			"description": "Expiry Date",
+			"type": "string",
+			"format": "date"
+		},
+		"fundCode": {
+			"description": "Fund Code",
+			"type": "string"
+		},
+		"fundCur": {
+			"description": "Fund Currency",
+			"type": "string"
+		},
+		"fundLocalName": {
+			"description": "Fund Local Name",
+			"type": "string"
+		},
+		"fundName": {
+			"description": "Fund Name",
+			"type": "string"
+		},
+		"gender": {
+			"description": "Gender",
+			"type": "string"
+		},
+		"globalTaxId": {
+			"description": "Party Global Tax Number equivalent to US IRS Number",
+			"type": "string"
+		},
+		"holdAmount": {
+			"description": "Hold amount",
+			"$ref": "#/definitions/amount"
+		},
+		"holdPurpose": {
+			"description": "Description of hold",
+			"type": "string"
+		},
+		"holdType": {
+			"description": "Type of hold",
+			"type": "string"
+		},
+		"interestAmount": {
+			"description": "Interest amount",
+			"$ref": "#/definitions/amount"
+		},
+		"investAmount": {
+			"description": "Amount Invested",
+			"$ref": "#/definitions/amount"
+		},
+		"interestRate": {
+			"description": "Interest rate",
+			"type": "number"
+		},
+		"investDate": {
+			"description": "Date of Investment",
+			"type": "string",
+			"format": "date"
+		},
+		"isCardClose": {
+			"description": "Card Closure Indicator",
+			"type": "boolean"
+		},
+		"isDoNotSpam": {
+			"description": "Indicates if the email address/mobile phone can be used for sending of promotional materials, true-cannot be used for promotional materials (i.e. for official communications only)",
+			"type": "boolean"
+		},
+		"isEmailVerified": {
+			"description": "Indicates if email has been verified",
+			"type": "boolean"
+		},
+		"isMasterAccount": {
+			"description": "Master Account Indicator",
+			"type": "boolean"
+		},
+		"isPrefAddress": {
+			"description": "Indicates this is preferred address for communication purpose",
+			"type": "boolean"
+		},
+		"isPrefEmail": {
+			"description": "Indicates this is preferred email address for communication purpose",
+			"type": "boolean"
+		},
+		"isPrefPhone": {
+			"description": "Indicates this is preferred phone for communication purpose",
+			"type": "boolean"
+		},
+		"incorporationCtry": {
+			"description": "Country of incorporation (ISO 3166-1 Country Code)",
+			"type": "string",
+			"maxLength": 3
+		},
+		"incorporationDate": {
+			"description": "Date of Incorporation",
+			"type": "string",
+			"format": "date"
+		},
+		"investRef": {
+			"description": "Investment reference",
+			"type": "string"
+		},
+		"isJointEntity": {
+			"description": "Indicate if customer record is for a joint-entity",
+			"type": "boolean"
+		},
+		"isBlacklisted": {
+			"description": "Indicates if customer is Blacklisted",
+			"type": "boolean"
+		},
+		"isNegated": {
+			"description": "Indicates if customer is in Negative List",
+			"type": "boolean"
+		},
+		"isPrimaryHolder": {
+			"description": "Indicates if the customer is Primary Holder",
+			"type": "boolean"
+		},
+		"isStaff": {
+			"description": "Indicates if party is a staff",
+			"type": "boolean"
+		},
+		"isUnitLinked": {
+			"description": "Indicates if policy is unit linked",
+			"type": "boolean"
+		},
+		"language": {
+			"description": "Language",
+			"type": "object",
+			"properties": {
+				"languageType": {
+					"description": "Type of Language",
+					"type": "string"
+				},
+				"ctryOfLanguage": {
+					"description": "Country where language is used (ISO 3166-1 Country Code)",
+					"type": "string",
+					"maxLength": 3
+				}
+			},
+			"additionalProperties": false
+		},
+		"lastUpdDate": {
+			"description": "Date of last update",
+			"type": "string",
+			"format": "date"
+		},
+		"lastUpdId": {
+			"description": "Last update officer identifier",
+			"type": "string"
+		},
+		"lastUpdMainUnit": {
+			"description": "Business unit of last update officer",
+			"type": "string"
+		},
+		"lastUpdTime": {
+			"description": "Time of last update",
+			"type": "string",
+			"format": "time"
+		},
+		"ledgerBalance": {
+			"description": "Ledger Balance",
+			"$ref": "#/definitions/amount"
+		},
+		"loanStatus": {
+			"description": "Status of loan",
+			"type": "string"
+		},
+		"localCurMarketValue": {
+			"description": "Market value of investment in local currency",
+			"type": "object",
+			"properties": {
+				"amount": {
+					"$ref": "#/definitions/amount"
+				}
+			},
+			"additionalProperties": false
+		},
+		"mainSupplCard": {
+			"description": "Main / Supplementary Card indicator, Values - P:Primary, S:Supplimentary",
+			"type": "string",
+			"enum": [
+				"P",
+				"S"
+			]
+		},
+		"marketValue": {
+			"description": "Market value of investment",
+			"type": "object",
+			"properties": {
+				"amount": {
+					"$ref": "#/definitions/amount"
+				}
+			},
+			"additionalProperties": false
+		},
+		"maturityDate": {
+			"description": "Date of Maturity",
+			"type": "string",
+			"format": "date"
+		},
+		"minPayAmount": {
+			"description": "Minimal amount for payment",
+			"type": "object",
+			"properties": {
+				"amount": {
+					"$ref": "#/definitions/amount"
+				}
+			},
+			"additionalProperties": false
+		},
+		"nationality": {
+			"description": "Nationality",
+			"type": "string",
+			"maxLength": 3
+		},
+		"officerType": {
+			"description": "Officer Type",
+			"type": "string"
+		},
+		"officerId": {
+			"description": "Officer Identifier",
+			"type": "string"
+		},
+		"officerName": {
+			"description": "Officer Name",
+			"type": "string"
+		},
+		"officerUnit": {
+			"description": "Buiness Unit of Officer",
+			"type": "string"
+		},
+		"officerContact": {
+			"description": "Contact details of Officer",
+			"type": "string"
+		},
+		"openDate": {
+			"description": "Account opening date",
+			"type": "string",
+			"format": "date"
+		},
+		"outstandingAmount": {
+			"description": "Outstanding principal + interest amount after last payment",
+			"$ref": "#/definitions/amount"
+		},
+		"overdraftLimit": {
+			"description": "Overdraft limit",
+			"$ref": "#/definitions/amount"
+		},
+		"overdraftLimitType": {
+			"description": "Overdraft limit type",
+			"type": "string"
+		},
+		"partyDoc": {
+			"description": "Party Documents",
+			"type": "object",
+			"properties": {
+				"isPrimaryDoc": {
+					"description": "Indicates if the document is the primary document used for identification purpose",
+					"type": "boolean"
+				},
+				"docType": {
+					"description": "Document Type",
+					"type": "string"
+				},
+				"docTypeDesc": {
+					"description": "Description of document Type",
+					"type": "string"
+				},
+				"docNumber": {
+					"description": "Document Number",
+					"type": "string"
+				},
+				"docIssuePlace": {
+					"description": "Place where document is issued",
+					"type": "string"
+				},
+				"docIssueCtry": {
+					"description": "Country where document is issued",
+					"type": "string"
+				},
+				"docIssueDate": {
+					"description": "Date document was issued",
+					"type": "string",
+					"format": "date"
+				},
+				"docExpiryDate": {
+					"description": "Expiry date of document",
+					"type": "string",
+					"format": "date"
+				}
+			},
+			"additionalProperties": false
+		},
+		"PartyFullName": {
+			"description": "Party's FullName",
+			"type": "string"
+		},
+		"partyInternalId": {
+			"description": "Party Internal Identifier",
+			"type": "string"
+		},
+		"partyName": {
+			"description": "Party Name",
+			"type": "object",
+			"properties": {
+				"fullName": {
+					"description": "Party's FullName",
+					"type": "string"
+				},
+				"name": {
+					"description": "Party's Name",
+					"type": "object",
+					"properties": {
+						"firstName": {
+							"description": "Party's First Name",
+							"type": "string"
+						},
+						"middleName": {
+							"description": "Party's Middle Name",
+							"type": "string"
+						},
+						"lastName": {
+							"description": "Party's Last Name (Surname)",
+							"type": "string"
+						}
+					},
+					"additionalProperties": false
+				},
+				"nameSuffix": {
+					"description": "Name Suffix",
+					"type": "string"
+				},
+				"salutation": {
+					"description": "Salutation",
+					"type": "string"
+				},
+				"alias": {
+					"description": "Party's alias",
+					"type": "string"
+				},
+				"localFullName": {
+					"description": "Party's name in the local language",
+					"type": "string"
+				},
+				"localAlias": {
+					"description": "Party's name in the local alias",
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
+		"partyEntityType": {
+			"description": "Party Entity Type",
+			"type": "string"
+		},
+		"partyId": {
+			"description": "Tokenized Party Identifier",
+			"type": "string"
+		},
+		"partyStatus": {
+			"description": "Party status",
+			"type": "string"
+		},
+		"partyType": {
+			"description": "Party Type",
+			"type": "string"
+		},
+		"payDueDate": {
+			"description": "Due date for current amount due",
+			"type": "string",
+			"format": "date"
+		},
+		"period": {
+			"description": "Period",
+			"type": "object",
+			"properties": {
+				"periodCount": {
+					"description": "Length of Period",
+					"type": "integer"
+				},
+				"periodType": {
+					"description": "Period Type",
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
+		"phone": {
+			"description": "Phone",
+			"type": "object",
+			"properties": {
+				"phoneType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/phoneType"
+				},
+				"phoneCtryCode": {
+					"description": "Telephone country code",
+					"type": "string"
+				},
+				"phoneAreaCode": {
+					"description": "Telephone area code",
+					"type": "string"
+				},
+				"phoneNumber": {
+					"description": "Telephone number",
+					"type": "string"
+				},
+				"phoneExtension": {
+					"description": "Telephone extension number",
+					"type": "string"
+				},
+				"effectiveDate": {
+					"$ref": "#/definitions/effectiveDate"
+				},
+				"expiryDate": {
+					"$ref": "#/definitions/expiryDate"
+				}
+			},
+			"additionalProperties": false
+		},
+		"phoneInternalId": {
+			"description": "Phone internal identifier",
+			"type": "string"
+		},
+		"phoneUsage": {
+			"description": "Indicates purpose associated with this phone",
+			"type": "string"
+		},
+		"phoneType": {
+			"description": "Telephone type",
+			"type": "string"
+		},
+		"policyNumber": {
+			"description": "Insurance Policy Number",
+			"type": "string"
+		},
+		"principalAmount": {
+			"description": "Principal Amount",
+			"$ref": "#/definitions/amount"
+		},
+		"productCode": {
+			"description": "Product Code",
+			"type": "string"
+		},
+		"productDesc": {
+			"description": "Product Description",
+			"type": "string"
+		},
+		"productInd": {
+			"description": "Product indicator",
+			"type": "string"
+		},
+		"profitLossAmount": {
+			"description": "unrealized profit or loss amount",
+			"type": "object",
+			"properties": {
+				"amount": {
+					"$ref": "#/definitions/amount"
+				}
+			},
+			"additionalProperties": false
+		},
+		"productType": {
+			"description": "Product Type",
+			"type": "string"
+		},
+		"productSubType": {
+			"description": "Product Sub type",
+			"type": "string"
+		},
+		"recCtrlIn": {
+			"description": "Record control information from requester",
+			"type": "object",
+			"properties": {
+				"cursor": {
+					"description": "Cursor for Current Processing",
+					"type": "string"
+				},
+				"maxRec": {
+					"description": "Maximum Records Requested",
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
+		"recCtrlOut": {
+			"description": "Record control information from provider",
+			"type": "object",
+			"properties": {
+				"matchedRec": {
+					"description": "Number of records matched",
+					"type": "integer"
+				},
+				"matchedRecSet": {
+					"description": "Number of record sets matched",
+					"type": "integer"
+				},
+				"sentRec": {
+					"description": "Sent Records Number",
+					"type": "integer"
+				},
+				"cursor": {
+					"description": "Cursor for Current Processing",
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
+		"schemeName": {
+			"description": "Product Scheme Name",
+			"type": "string"
+		},
+		"schemeShortName": {
+			"description": "Product Scheme Short Name",
+			"type": "string"
+		},
+		"schemeSubType": {
+			"description": "Product Scheme Sub Type",
+			"type": "string"
+		},
+		"schemeType": {
+			"description": "Product Scheme Type",
+			"type": "string"
+		},
+		"segmentLevel1": {
+			"description": "Party segmentation level 1",
+			"type": "string"
+		},
+		"segmentLevel2": {
+			"description": "Party segmentation level 2",
+			"type": "string"
+		},
+		"segmentLevel3": {
+			"description": "Party segmentation level 3",
+			"type": "string"
+		},
+		"segmentLevel4": {
+			"description": "Party segmentation level 4",
+			"type": "string"
+		},
+		"startDate": {
+			"description": "Start Date",
+			"type": "string",
+			"format": "date"
+		},
+		"statusCode": {
+			"description": "statusCode",
+			"type": "string"
+		},
+		"statusDesc": {
+			"description": "status Description",
+			"type": "string"
+		},
+		"statusReasonCode": {
+			"description": "Status Reason Code",
+			"type": "string"
+		},
+		"telex": {
+			"description": "Telex adddess",
+			"type": "string"
+		},
+		"totalFundUnit": {
+			"description": "Total Number of fund units",
+			"type": "number"
+		},
+		"totalPremiumPaid": {
+			"description": "Total Premium Paid",
+			"type": "object",
+			"properties": {
+				"amount": {
+					"$ref": "#/definitions/amount"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

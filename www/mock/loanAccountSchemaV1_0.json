@@ -1,0 +1,158 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "http://www.xxx.com.sg/api/v1/parties",
+	"title": "DepositAccount",
+	"description": "Core schema for Deposit Account",
+	"definitions": {
+		"loan": {
+			"description": "Loan",
+			"type": "object",
+			"properties": {
+				"accountNumber": {
+					"$ref": "commonSchemaV1_0.json#/definitions/accountNumber"
+				},
+				"subAccountNumber": {
+					"description": "Sub Account Number",
+					"type": "string"
+				},
+				"accountId": {
+					"$ref": "commonSchemaV1_0.json#/definitions/accountId"
+				},
+				"accountName": {
+					"$ref": "commonSchemaV1_0.json#/definitions/accountName"
+				},
+				"productType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/productType"
+				},
+				"productSubType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/productSubType"
+				},
+				"productCode": {
+					"$ref": "commonSchemaV1_0.json#/definitions/productCode"
+				},
+				"productDesc": {
+					"$ref": "commonSchemaV1_0.json#/definitions/productDesc"
+				},
+				"accountType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/accountType"
+				},
+				"accountSignatoryType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/accountSignatoryType"
+				},
+				"loanStatusDetl": {
+					"description": "Account Status Detail",
+					"type": "object",
+					"properties": {
+						"loanStatus": {
+							"$ref": "commonSchemaV1_0.json#/definitions/accountStatus"
+						},
+						"statusReasonCode": {
+							"$ref": "commonSchemaV1_0.json#/definitions/statusReasonCode"
+						},
+						"lastUpdDate": {
+							"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+						}
+					},
+					"additionalProperties": false
+				}
+			},
+			"additionalProperties": false
+		},
+		"holdDetl": {
+			"description": "Hold Detail",
+			"type": "object",
+			"properties": {
+				"holdType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/holdType"
+				},
+				"holdPurpose": {
+					"$ref": "commonSchemaV1_0.json#/definitions/holdPurpose"
+				},
+				"holdAmount": {
+					"$ref": "commonSchemaV1_0.json#/definitions/amount"
+				}
+			},
+			"additionalProperties": false
+		},
+		"returnChequeDetl": {
+			"description": "Returned Cheque Detail",
+			"type": "object",
+			"properties": {
+				"returnChequePeriod": {
+					"$ref": "#/definitions/returnChequePeriod"
+				},
+				"returnChequeCount": {
+					"$ref": "#/definitions/returnChequeCount"
+				}
+			},
+			"additionalProperties": false
+		},
+		"returnChequePeriod": {
+			"description": "Period of returned cheque",
+			"type": "string"
+		},
+		"returnChequeCount": {
+			"description": "Count of returned Cheques",
+			"type": "number"
+		},
+		"termsAndCond": {
+			"description": "Terms and Condition document",
+			"type": "string"
+		},
+		"accountHolder": {
+			"description": "Account Holder",
+			"type": "object",
+			"properties": {
+				"partyId": {
+					"description": "party identifier",
+					"type": "string"
+				},
+				"partyInternalId": {
+					"description": "Party Internal Identifier",
+					"type": "object",
+					"oneOf": [
+						{
+							"$ref": "commonSchemaV1_0.json#/definitions/CISInternalId"
+						},
+						{
+							"$ref": "commonSchemaV1_0.json#/definitions/partyInternalId"
+						}
+					]
+				},
+				"isPrimaryHolder": {
+					"description": "Indicates if the party is Primary Holder",
+					"type": "boolean"
+				}
+			},
+			"additionalProperties": false
+		},
+		"accountSignalDetl": {
+			"description": "Account signal Detail",
+			"type": "object",
+			"properties": {
+				"accountSignal": {
+					"description": "Account Signal",
+					"type": "string"
+				},
+				"accountSignalReason": {
+					"description": "Account Signal Reason",
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
+		"overdraftLimitDetl": {
+			"description": "Overdraft Limit detail",
+			"type": "object",
+			"properties": {
+				"overdraftLimitType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/overdraftLimitType"
+				},
+				"overdraftLimit": {
+					"$ref": "commonSchemaV1_0.json#/definitions/overdraftLimit"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

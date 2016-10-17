@@ -1,0 +1,21 @@
+<ion-view view-title="{{buffer.parties.partyDetl.partyRetail.partyName.fullName}}">
+  <ion-nav-buttons side="secondary">
+    <button ng-if="editModeFlag" class="button" ng-click="openConfirmation()" >
+      <i class="icon ion-checkmark"></i>
+    </button>
+    <button ng-if="editModeFlag" class="button" ng-click="doNotSubmit()" >
+      <i class="icon ion-close"></i>
+    </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="list card" ng-repeat="cardItem in cardItems">
+
+      <a ng-repeat="attribute in cardItem" class="item" on-hold="toggleEditMode($parent.$index, $index)" off-click="attribute.editMode = false" off-click-filter='#edit-popup'>
+        <div class="item-icon-left" style ="float:left"><i ng-class="[attribute.value =='M'? attribute.icon2 : attribute.icon1, attribute.isEdited? 'red-icon':'black-icon' ]"></i> &nbsp;<span ng-class="attribute.isEdited? 'red-text':'black-text'" ng-bind="attribute.label"></span><span ng-class="attribute.isEdited? 'red-text':'black-text'" ng-bind="attribute.value"></span></div>
+        <button ng-click="edit(attribute.label, $parent.$parent.$index, $index)" ng-if="attribute.editMode" class="button button-assertive" style="float:right"><i class="icon ion-edit"></i></button>
+      </a>
+
+    </div>
+
+  </ion-content>
+</ion-view>

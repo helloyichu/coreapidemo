@@ -1,0 +1,30 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Core schema Receive Marketing Material details",
+	"definitions": {
+		"marketingSubscriptionDetl": {
+			"description": "Subscribed marketing material details",
+			"type": "object",
+			"properties": {
+				"communicationMode": {
+					"description": "Communication Mode",
+					"type": "string"
+				},
+				"communicationModeDesc": {
+					"description": "Communication mode description",
+					"type": "string"
+				},
+				"doNotSpamRegistry": {
+					"description": "Registry which receives the opt out request",
+					"type": "string"
+				},
+				"receivedDateTime": {
+					"description": "Date and time the request was registered",
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

@@ -1,0 +1,17 @@
+<ion-content delegate-handle='appointment-details' class="event-detail-container" has-bouncing="false" ng-show="showEventDetail" overflow-scroll="false">
+
+  <div class="list" ng-if="selectedDate.events">
+    <div class="item item-button-right" ng-repeat="event in selectedDate.events">
+      <span ng-if="!event.allDay">{{::event.startTime|date: 'HH:mm'}} - {{::event.endTime|date: 'HH:mm'}}</span>
+      <span ng-if="event.allDay">All day</span>
+      <button class="button button-positive" ng-class="{'reserved-button' : event.reserved }" ng-disabled="event.reserved" style="background-color: #009900;" ng-click="eventSelected({event:event})">
+        {{event.reserved? 'Reserved' : 'Reserve'}}
+      </button>
+    </div>
+  </div>
+  <table class="table table-bordered table-striped table-fixed event-detail-table">
+    <tr ng-if="!selectedDate.events">
+      <td class="no-event-label" ng-bind="::noEventsLabel"></td>
+    </tr>
+  </table>
+</ion-content>

@@ -1,0 +1,73 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "http://www.xxx.com.sg/api/v1/parties",
+	"title": "products",
+	"description": "Core schema of Product",
+	"definitions": {
+		"product": {
+			"type": "object",
+			"oneOf": [
+				{
+					"description": "Deposit Account",
+					"type": "object",
+					"properties": {
+						"depositAccount": {
+							"$ref": "mock/depositAccountSchemaV1_0.json#/definitions/depositAccount"
+						}
+					},
+					"additionalProperties": false
+				},
+				{
+					"description": "Card",
+					"type": "object",
+					"properties": {
+						"card": {
+							"$ref": "mock/cardSchemaV1_0.json#/definitions/card"
+						}
+					},
+					"additionalProperties": false
+				},
+				{
+					"description": "Loan Account",
+					"type": "object",
+					"properties": {
+						"loan": {
+							"$ref": "mock/loanAccountSchemaV1_0.json#/definitions/loan"
+						}
+					},
+					"additionalProperties": false
+				},
+				{
+					"description": "Investment Account",
+					"type": "object",
+					"properties": {
+						"investmentAccount": {
+							"$ref": "mock/investmentAccountSchemaV1_0.json#/definitions/investmentAccount"
+						}
+					},
+					"additionalProperties": false
+				},
+				{
+					"description": "Reward Account",
+					"type": "object",
+					"properties": {
+						"rewardAccount": {
+							"$ref": "mock/rewardAccountSchemaV1_0.json#/definitions/rewardAccount"
+						}
+					},
+					"additionalProperties": false
+				},
+				{
+					"description": "Service",
+					"type": "object",
+					"properties": {
+						"service": {
+							"$ref": "mock/serviceSchemaV1_0.json#/definitions/service"
+						}
+					},
+					"additionalProperties": false
+				}
+			]
+		}
+	}
+}

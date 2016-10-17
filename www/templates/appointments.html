@@ -1,0 +1,5 @@
+<ion-view view-title="My Appointments - {{viewTitle}}">
+  <ion-content>
+    <calendar ng-model="currentDate" calendar-mode="mode" no-events-label= "No Appointments Booked" event-source="eventSource" time-selected="onTimeSelected(selectedTime, events)" title-changed="onViewTitleChanged(title)" event-selected="onEventSelected(event)" monthview-event-detail-template-url="monthviewEventDetailTemplateUrl">
+  </ion-content>
+</ion-view>

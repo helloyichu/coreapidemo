@@ -1,0 +1,40 @@
+/* Empty. Add your own CSS if you like */
+
+.table > thead:first-child > tr:first-child > th, .table > thead:first-child > tr:first-child > td {
+  border-top: 0;
+  background-color: #387ef6;
+  border-style: none;
+  color: white;
+
+}
+
+.monthview-selected {
+  background-color: #3a87ad;
+  color: white;
+}
+
+.monthview-primary-with-event {
+  background-color: #009900;
+  color: white;
+}
+
+.red-text{
+  color: red;
+}
+
+.green-text{
+  color: green;
+}
+
+.black-text{
+  color: black;
+}
+
+.reserved-button{
+  background-color: #444 !important;
+}
+
+.welcome-title.ng-enter {
+  -webkit-animation: fadeInLeft 3s;
+  animation: fadeInLeft 3s;
+}

@@ -1,0 +1,62 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Schema for Party Risk Score details",
+	"definitions": {
+		"partyRiskScoreDetl": {
+			"description": "Party risk score details",
+			"type": "object",
+			"properties": {
+				"partyRiskScore": {
+					"description": "Party Risk Score",
+					"type": "string"
+				},
+				"riskScoreDateTime": {
+					"description": "Date and time of last risk score update",
+					"type": "string",
+					"format": "date-time"
+				},
+				"partyRiskMemo": {
+					"description": "Party risk memo",
+					"type": "string"
+				},
+				"effectiveDateTime": {
+					"description": "Risk score effective date and time",
+					"type": "string",
+					"format": "date-time"
+				},
+				"expiryDateTime": {
+					"description": "Risk score expiry date and time",
+					"type": "string",
+					"format": "date-time"
+				},
+				"partyRiskLevel": {
+					"description": "Party risk level",
+					"type": "string"
+				},
+				"riskLevelDateTime": {
+					"description": "Date and time of last risk level update",
+					"type": "string",
+					"format": "date-time"
+				},
+				"nextReviewDateTime": {
+					"description": "Next review date and time",
+					"type": "string",
+					"format": "date-time"
+				},
+				"lastUpdDate": {
+					"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+				},
+				"lastUpdTime": {
+					"$ref": "commonSchemaV1_0.json#/definitions/lastUpdTime"
+				},
+				"lastUpdMainUnit": {
+					"$ref": "commonSchemaV1_0.json#/definitions/lastUpdMainUnit"
+				},
+				"lastUpdId": {
+					"$ref": "commonSchemaV1_0.json#/definitions/lastUpdId"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

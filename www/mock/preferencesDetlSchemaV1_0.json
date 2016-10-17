@@ -1,0 +1,91 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Schema for Preferences",
+	"definitions": {
+		"preferencesDetl": {
+			"description": "Preferences details",
+			"type": "object",
+			"properties": {
+				"subscriptionList": {
+					"description": "List of subscriptions",
+					"type": "array",
+					"items": [
+						{
+							"$ref": "#/definitions/subscriptions"
+						}
+					],
+					"additionalItems": false
+				}
+			},
+			"additionalProperties": false
+		},
+		"subscriptions": {
+			"description": "Subscriptions",
+			"type": "object",
+			"properties": {
+				"subscriptionType": {
+					"description": "Type of Subscription",
+					"type": "string"
+				},
+				"subscriptionTypeDesc": {
+					"description": "Subscription type description ",
+					"type": "string"
+				},
+				"subscriptionDetl": {
+					"description": "Subscription details",
+					"type": "object",
+					"properties": {
+						"subscriptionOption": {
+							"description": "Subcription option",
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"oneOf": [
+						{
+							"description": "Channel service details",
+							"type": "object",
+							"properties": {
+								"channelServiceDetl": {
+									"$ref": "channelServiceDetlSchemaV1_0.json#/definitions/channelServiceDetl"
+								}
+							},
+							"additionalProperties": false
+						},
+						{
+							"description": "Statement details",
+							"type": "object",
+							"properties": {
+								"statementDetl": {
+									"$ref": "subscriptionStatementDetlSchemaV1_0.json#/definitions/statementDetl"
+								}
+							},
+							"additionalProperties": false
+						},
+						{
+							"description": "Marketing details",
+							"type": "object",
+							"properties": {
+								"marketingDetl": {
+									"$ref": "marketingDetlSchemaV1_0.json#/definitions/marketingSubscriptionDetl"
+								}
+							},
+							"additionalProperties": false
+						},
+						{
+							"description": "Alert service details",
+							"type": "object",
+							"properties": {
+								"alertServiceDetl": {
+									"$ref": "alertServiceDetlSchemaV1_0.json#/definitions/alertServiceList"
+								}
+							},
+							"additionalProperties": false
+						}
+					]
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

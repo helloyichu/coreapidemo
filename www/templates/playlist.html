@@ -1,0 +1,165 @@
+<ion-view view-title="{{account.depositAccount.productDesc}}">
+  <ion-content>
+    <div class="card">
+      <div class="item item-text-wrap">
+        <div><b>Account Number</b></div>
+        <div>{{account.depositAccount.accountNumber}}</div>
+      </div>
+    </div>
+
+    <ul class="list">
+      <li class="item">
+        <div class="row">
+          <div class="col-50">Account Type</div>
+          <div style="text-align: right" ng-switch on="account.depositAccount.accountType">
+            <span ng-switch-when="01">Other Private Individual  & Households</span>
+            <span ng-switch-when="04">Bank</span>
+            <span ng-switch-when="05">Company</span>
+            <span ng-switch-when="06">Public Co Ltd by Guarantee</span>
+            <span ng-switch-when="07">DBS Subsidiary</span>
+            <span ng-switch-when="10">Trust Minor</span>
+            <span ng-switch-when="11">Trust (Individual)</span>
+            <span ng-switch-when="12">Receivership (Non-corporation)</span>
+            <span ng-switch-when="13">Staff</span>
+            <span ng-switch-when="15">Executor and Administrator</span>
+            <span ng-switch-when="20">Association/Club/Society/Co-ope</span>
+            <span ng-switch-when="21">Partnership</span>
+            <span ng-switch-when="22">Sole Proprietorship</span>
+            <span ng-switch-when="23">Private Corporation</span>
+            <span ng-switch-when="24">Public Corporation</span>
+            <span ng-switch-when="25">School</span>
+            <span ng-switch-when="26">Trust-Corporate</span>
+            <span ng-switch-when="27">Receivership (Corporation)</span>
+            <span ng-switch-when="28">Registered Trade Union</span>
+            <span ng-switch-when="29">Finance Company</span>
+            <span ng-switch-when="30">Insurance Company</span>
+            <span ng-switch-when="31">Discount House</span>
+            <span ng-switch-when="32">Security House</span>
+            <span ng-switch-when="33">Gold Trading Company</span>
+            <span ng-switch-when="34">Investment and Holding Company</span>
+            <span ng-switch-when="35">Deposit Taking Company</span>
+            <span ng-switch-when="36">Other Financial Institutions</span>
+            <span ng-switch-when="37">Monetary Authority</span>
+            <span ng-switch-when="38">Foreign Central Bank</span>
+            <span ng-switch-when="40">Other Financial Institutions (ACU)</span>
+            <span ng-switch-when="41">Merchant Bank (ACU)</span>
+            <span ng-switch-when="42">Commercial Bank (ACU) – Excluding Central Bank</span>
+            <span ng-switch-when="50">Merchant Bank  </span>
+            <span ng-switch-when="51">Savings Bank</span>
+            <span ng-switch-when="52">Commercial Bank (excluding central bank)</span>
+            <span ng-switch-when="60">Singapore Government</span>
+            <span ng-switch-when="61">Public Sector / Statutory Board</span>
+            <span ng-switch-when="62">Quasi / Government Corporation</span>
+            <span ng-switch-when="63">Foreign Government</span>
+            <span ng-switch-when="64">Town Council</span>
+            <span ng-switch-when="70">Head Office and Local Branches</span>
+            <span ng-switch-when="71">Head Office and Local Branches (ACU)</span>
+            <span ng-switch-when="72">DBS Overseas Branches</span>
+            <span ng-switch-when="80">DBS Subsidiary – Commercial Bank</span>
+            <span ng-switch-when="81">DBS Subsidiary – Merchant Bank</span>
+            <span ng-switch-when="82">DBS Subsidiary – Finance Company</span>
+            <span ng-switch-when="83">DBS Subsidiary – Dpposit Taking Company</span>
+            <span ng-switch-when="84">DBS Subsidiary – Other Financial Institution</span>
+            <span ng-switch-when="85">DBS Subsidiary – Other Non-Financial Institution</span>
+            <span ng-switch-when="87">DBS Subsidiary – Commercial Bank (ACU)</span>
+            <span ng-switch-when="88">DBS Subsidiary – Merchant Bank (ACU)</span>
+            <span ng-switch-when="89">DBS Subsidiary – Other Financial Institution (ACU)</span>
+            <span ng-switch-when="99">Others</span>
+            <span ng-switch-default>NA</span>
+          </div>
+          <div style="float:left; text-align: right"></div>
+        </div>
+      </li>
+      <li class="item">
+        <div class="row">
+          <div class="col-50">Multiplier Account</div>
+          <div ng-class="account.depositAccount.isMultiplierAccount == 'true' ?'green-text':'red-text'" class="col-20" style="text-align: right">
+            {{account.depositAccount.isMultiplierAccount == 'true' ? 'yes' : 'no'}}
+          </div>
+          <div style="float:left; text-align: right"></div>
+        </div>
+      </li>
+      <li class="item">
+        <div class="row">
+          <div class="col-50">Product Type</div>
+          <div style="text-align: right" ng-switch on="account.depositAccount.productType">
+            <span ng-switch-when="ASPF">ASPF Investment Account</span>
+            <span ng-switch-when="BANKCARD">Bank Card</span>
+            <span ng-switch-when="CA">DBS S$ Current Account</span>
+            <span ng-switch-when="CASHLINE">Cashline Account</span>
+            <span ng-switch-when="CL">Customer Liabilities</span>
+            <span ng-switch-when="CPF">CPF Investment Account</span>
+            <span ng-switch-when="CRCARD">Credit Card</span>
+            <span ng-switch-when="DRCARD">Debit Card</span>
+            <span ng-switch-when="FCCA">Foreign Currency Current Account</span>
+            <span ng-switch-when="FCFD">Foreign Currency Fixed Deposit</span>
+            <span ng-switch-when="FD">Local Currency Fixed Deposit</span>
+            <span ng-switch-when="FXM">FX Margin</span>
+            <span ng-switch-when="INV">Investment (Avaloq product)</span>
+            <span ng-switch-when="LOAN">Loans</span>
+            <span ng-switch-when="MTA">Margin Trading Account</span>
+            <span ng-switch-when="NOSTRO">Nostro Account</span>
+            <span ng-switch-when="POSBCA">POSB Current Account</span>
+            <span ng-switch-when="POSBSA">POSB Savings Account</span>
+            <span ng-switch-when="SA">DBS S$ Savings /Savings Plus Account</span>
+            <span ng-switch-when="SDB">Safe Deposit Box</span>
+            <span ng-switch-when="SF">Securities (Share) Financing</span>
+            <span ng-switch-when="SGS">Singapore Government Securities Account</span>
+            <span ng-switch-when="SRS">Dummy Account</span>
+            <span ng-switch-when="UT">Unit Trust</span>
+            <span ng-switch-default>NA</span>
+          </div>
+          <div style="float:left; text-align: right"></div>
+        </div>
+      </li>
+      <li class="item">
+        <div class="row">
+          <div class="col-50">Signatory Type</div>
+          <div style="text-align: right" ng-switch on="account.depositAccount.accountSignatoryType">
+            <span ng-switch-when="01">Single</span>
+            <span ng-switch-when="02">Joint-Alternate</span>
+            <span ng-switch-when="03">Joint-All</span>
+            <span ng-switch-when="04">Trust</span>
+            <span ng-switch-default>NA</span>
+          </div>
+          <div style="float:left; text-align: right"></div>
+        </div>
+      </li>
+      <li class="item">
+        <div class="row">
+          <div class="col-50">Status</div>
+          <div style="text-align: right" ng-switch on="account.depositAccount.accountStatusDetl.accountStatus">
+            <span ng-switch-when="00">Dummy Account</span>
+            <span ng-switch-when="01">Active</span>
+            <span ng-switch-when="02">Inactive</span>
+            <span ng-switch-when="03">Account Frozen</span>
+            <span ng-switch-when="04">Deceased</span>
+            <span ng-switch-when="05">Bankrupt</span>
+            <span ng-switch-when="06">Unsound mind</span>
+            <span ng-switch-when="07">Closed</span>
+            <span ng-switch-when="08">Closed by Bank - Delinquent</span>
+            <span ng-switch-when="09">Closed by Bank - Technical</span>
+            <span ng-switch-when="10">Closed by Customer</span>
+            <span ng-switch-when="11">Dormant</span>
+            <span ng-switch-when="12">Converted</span>
+            <span ng-switch-when="13">Pending Closure</span>
+            <span ng-switch-when="14">Pending Processing</span>
+            <span ng-switch-when="99">Status unknown</span>
+            <span ng-switch-default>NA</span>
+          </div>
+          <div style="float:left; text-align: right"></div>
+        </div>
+      </li>
+      <li class="item">
+        <div class="row">
+          <div class="col-50">Status Reason</div>
+          <div style="text-align: right" ng-switch on="account.depositAccount.accountStatusDetl.accountStatusReasonCode">
+            <span ng-switch-when="0">Not Applicable</span>
+            <span ng-switch-default>NA</span>
+          </div>
+          <div style="float:left; text-align: right"></div>
+        </div>
+      </li>
+    </ul>
+  </ion-content>
+</ion-view>

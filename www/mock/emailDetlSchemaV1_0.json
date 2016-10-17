@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Email details",
+  "definitions": {
+    "emailDetl": {
+      "type": "object",
+      "properties": {
+		"emailInternalId": {
+			"description": "Email internal identifier",
+			"type": "string"
+			},
+		"emailAddressDetl": {  
+	        "description": "Email details",		
+            "type": "object",
+            "properties": {
+                "emailAddressType": {  
+				  "description": "Email address type",
+                  "type": "string"
+                },
+                "emailAddress": {  
+                  "description": "Email address or URL",
+				  "type": "string" 
+                },               
+                "effectiveDate": {
+                  "description": "Effective Date",
+				  "type": "string", "format": "date"
+                },
+                "expiryDate": {
+                  "description": "Expiry Date",
+				  "type": "string", "format": "date"
+                }
+			   },
+				 "additionalProperties": false
+            },            
+            "isPrefEmail": {            
+              "description": "Indicates this is preferred email address for communication purpose",
+			  "type": "boolean"
+            },            
+            "isDoNotSpam": {             
+              "description": "Indicates if the email address/mobile phone can be used for sending of promotional materials, true-cannot be used for promotional materials (i.e. for official communications only)",
+			  "type": "boolean"			  
+            },
+			"emailSourceDesc": {            
+              "description": "Source of email",
+			  "type": "string"
+            },
+			"isEmailVerified": {            
+              "description": "Indicates if email has been verified",
+			  "type": "boolean"
+            },
+            "lastUpdDate": {
+			  "description": "Date of last update",
+			  "type": "string", "format": "date"              
+            },
+            "lastUpdTime": {
+              "description": "Time of last update",
+			  "type": "string", "format": "time"              
+            },
+            "lastUpdMainUnit": {
+              "description": "Business unit of last update officer",			 
+              "type": "string"
+            },
+            "lastUpdId": {
+              "description": "last update officer identifier",			 
+              "type": "string"           
+			}
+		  },
+		  	"additionalProperties": false
+        }
+	}	
+}

@@ -1,0 +1,124 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Party Address details",
+	"definitions": {
+		"partyAddressDetl": {
+			"type": "object",
+			"properties": {
+				"addressInternalId": {
+					"description": "Address internal identifier",
+					"type": "string"
+				},
+				"addressType": {
+					"description": "Address type",
+					"type": "string"
+				},
+                "addressLanguage": {
+			    "description": "Address language",
+			    "type": "object",
+			      "properties": {
+				    "addressLanguage": {
+					  "$ref": "commonSchemaV1_0.json#/definitions/language"
+				    }
+			      },
+			         "additionalProperties": false
+		        },
+				"partyAddress": {
+					"$ref": "commonSchemaV1_0.json#/definitions/address"
+				},
+				"effectiveDate": {
+					"description": "Effective Date",
+					"type": "string",
+					"format": "date"
+				},
+				"expiryDate": {
+					"description": "Expiry Date",
+					"type": "string",
+					"format": "date"
+				},
+				"lastUpdDate": {
+					"description": "Date of last update",
+					"type": "string",
+					"format": "date"
+				},
+				"lastUpdTime": {
+					"description": "Time of last update",
+					"type": "string",
+					"format": "time"
+				},
+				"lastUpdMainUnit": {
+					"description": "Business unit of last update officer",
+					"type": "string"
+				},
+				"lastUpdId": {
+					"description": "last update officer identifier",
+					"type": "string"
+				},
+				"isPrefAddress": {
+					"description": "Indicates this is preferred address for communication purpose",
+					"type": "boolean"
+				},
+				"holdMailDetl": {
+					"description": "Holdmail details",
+					"type": "object",
+					"properties": {
+						"isHoldMail": {
+							"description": "Indicates if address can be used for mailing purposes",
+							"type": "boolean"
+						},
+						"holdMailRequestParty": {
+							"description": "Party who requested for the hold mail service",
+							"type": "string"
+						},
+						"holdMailUpdDate": {
+							"description": "Hold mail uodate date and time",
+							"type": "string",
+							"format": "date-time"
+						},
+						"holdMailReason": {
+							"description": "Reason for hold mail setting",
+							"type": "string"
+						},
+						"lastUpdDate": {
+							"description": "Date of last update",
+							"type": "string",
+							"format": "date"
+						},
+						"lastUpdMainUnit": {
+							"description": "Business unit of last update officer",
+							"type": "string"
+						}
+					},
+					"additionalProperties": false
+				},
+				"altPartyAddressDetl": {
+					"description": "Alternate party address details",
+					"type": "object",
+					"properties": {
+						"altAddressLanguage": {
+							"description": "Alternate address language",
+							"type": "object",
+							"properties": {
+								"languageType": {
+									"description": "Type of Language",
+									"type": "string"
+								},
+								"ctryOfLanguage": {
+									"description": "Country where language is used",
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						},
+						"altAddress": {
+							"description": "Alternate address",
+							"$ref": "commonSchemaV1_0.json#/definitions/address"
+						}
+					},
+					"additionalProperties": false
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

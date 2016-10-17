@@ -1,0 +1,70 @@
+<ion-modal-view id='add-edit-contact-popup'>
+  <ion-header-bar>
+    <h1 class="title"><span ng-bind="title"></span></h1>
+  </ion-header-bar>
+  <ion-content>
+  <div class="list">
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Name of Contact</span>
+      <input type="text" placeholder="Name of Contact" ng-model="contactBuffer.contactName">
+    </label>
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Phone Type
+      </div>
+      <div>
+        <select ng-model="contactBuffer.phoneTypeDesc">
+          <option ng-repeat="phoneType in phoneTypeList">{{phoneType.phoneTypeDesc}}</option>
+        </select>
+      </div>
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Country Code</span>
+      <input type="text" placeholder="Country Code" ng-model="contactBuffer.phone.phoneCtryCode">
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Area Code (if any)</span>
+      <input type="text" placeholder="Area Code (if any)" ng-model="contactBuffer.phone.phoneAreaCode">
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Phone Number</span>
+      <input type="text" placeholder="Phone Number" ng-model="contactBuffer.phone.phoneNumber">
+    </label>
+
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Effective Date (if any)</span>
+      <input type="text" placeholder="Effective Date (if any)" ng-model="contactBuffer.phone.effectiveDate" ng-click="openDatePickerEffectiveDate()">
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Expiry Date (if any)</span>
+      <input type="text" placeholder="Expiry Date (if any)" ng-model="contactBuffer.phone.expiryDate" ng-click="openDatePickerExpiryDate()">
+    </label>
+
+    <label class="item item-toggle">
+      <span ng-class="contactBuffer.isPrefPhone == true?'green-text':'black-text'"> {{contactBuffer.isPrefPhone== true? 'Preferred Phone':'Not My Preferred Phone'}} </span>
+      <label class="toggle toggle-balanced">
+        <input type="checkbox" ng-model="contactBuffer.isPrefPhone">
+        <div class="track">
+          <div class="handle"></div>
+        </div>
+      </label>
+    </label>
+    <label class="item item-toggle">
+      <span ng-class="contactBuffer.isDoNotSpam == true ?'black-text':'green-text'"> {{contactBuffer.isDoNotSpam == true? 'Do Not Send SMS Notifactions':'Send Me SMS Notifactions'}} </span>
+      <label class="toggle toggle-balanced">
+        <input type="checkbox" ng-model="contactBuffer.isDoNotSpam">
+        <div class="track">
+          <div class="handle"></div>
+        </div>
+      </label>
+    </label>
+  </div>
+
+  </ion-content>
+  <ion-footer-bar style="height:55px;">
+    <div class="row" style="padding: 0px;" >
+      <div class="col-50"><button class="button button-block button-positive" ng-click="contactUpdate()">Ok</button></div>
+      <div class="col-50"><button class="button button-block" ng-click="contactRevert()">Cancel</button></div></div>
+    </div>
+  </ion-footer-bar>
+</ion-modal-view>

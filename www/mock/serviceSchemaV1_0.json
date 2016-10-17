@@ -1,0 +1,78 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "http://www.xxx.com.sg/api/v1/parties",
+	"title": "DepositAccount",
+	"description": "Core schema for Service",
+	"definitions": {
+		"service": {
+			"description": "Service",
+			"type": "object",
+			"properties": {
+				"accountNumber": {
+					"$ref": "commonSchemaV1_0.json#/definitions/accountNumber"
+				},
+				"accountId": {
+					"$ref": "commonSchemaV1_0.json#/definitions/accountId"
+				},
+				"productType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/productType"
+				},
+				"productCode": {
+					"$ref": "commonSchemaV1_0.json#/definitions/productCode"
+				},
+				"channelId": {
+					"$ref": "commonSchemaV1_0.json#/definitions/channelId"
+				},
+				"accountStatusDetl": {
+					"description": "Account Status Detail",
+					"type": "object",
+					"properties": {
+						"accountStatus": {
+							"$ref": "commonSchemaV1_0.json#/definitions/accountStatus"
+						},
+						"lastUpdDate": {
+							"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+						}
+					},
+					"additionalProperties": false
+				}
+			},
+			"additionalProperties": false
+		},
+		"holdDetl": {
+			"description": "Detail of Hold",
+			"type": "object",
+			"properties": {
+				"holdType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/holdType"
+				},
+				"holdPurpose": {
+					"$ref": "commonSchemaV1_0.json#/definitions/holdPurpose"
+				},
+				"holdAmount": {
+					"$ref": "commonSchemaV1_0.json#/definitions/amount"
+				}
+			},
+			"additionalProperties": false
+		},
+		"termsAndCond": {
+			"description": "Terms And Conditions document",
+			"type": "string"
+		},
+		"accountSignalDetl": {
+			"description": "Account signal Detail",
+			"type": "object",
+			"properties": {
+				"accountSignal": {
+					"description": "Account Signal",
+					"type": "string"
+				},
+				"accountSignalReason": {
+					"description": "Account Signal Reason",
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

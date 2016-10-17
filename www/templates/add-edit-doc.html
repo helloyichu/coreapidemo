@@ -1,0 +1,48 @@
+<ion-modal-view id='add-edit-doc-popup'>
+  <ion-header-bar>
+    <h1 class="title"><span ng-bind="title"></span></h1>
+  </ion-header-bar>
+  <ion-content>
+  <div class="list">
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Document Number</span>
+      <input type="text" placeholder="Document Number" ng-model="documentBuffer.docNumber">
+    </label>
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Document Type
+      </div>
+      <div>
+        <select ng-model="documentBuffer.docTypeDesc">
+          <option ng-repeat="docType in docTypeList">{{docType.docTypeDesc}}</option>
+        </select>
+      </div>
+    </label>
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Place of Issue
+      </div>
+      <div>
+        <select ng-model="documentBuffer.docIssuePlace">
+          <option ng-repeat="country in countryList">{{country}}</option>
+        </select>
+      </div>
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Date of Issue</span>
+      <input type="text" placeholder="Date of Issue" ng-model="documentBuffer.docIssueDate" ng-click="openDatePickerDateOfIssue()">
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Expiry Date</span>
+      <input type="text" placeholder="Expiry Date" ng-model="documentBuffer.docExpiryDate" ng-click="openDatePickerDateOfExpiry()">
+    </label>
+  </div>
+
+  </ion-content>
+  <ion-footer-bar style="height:55px;">
+    <div class="row" style="padding: 0px;" >
+      <div class="col-50"><button class="button button-block button-positive" ng-click="documentUpdate()">Ok</button></div>
+      <div class="col-50"><button class="button button-block" ng-click="documentRevert()">Cancel</button></div></div>
+    </div>
+  </ion-footer-bar>
+</ion-modal-view>

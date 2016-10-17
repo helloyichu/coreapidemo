@@ -1,0 +1,30 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Core schema Subscribed service details",
+	"definitions": {
+		"channelServiceDetl": {
+			"description": "Subscribed channel services",
+			"type": "object",
+			"properties": {
+				"channelServiceList": {
+					"description": "List of channel service",
+					"type": "array",
+					"items": [
+						{
+							"type": "object",
+							"properties": {
+								"channelType": {
+									"description": "Type of channel service",
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						}
+					],
+					"additionalItems": false
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

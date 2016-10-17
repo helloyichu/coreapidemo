@@ -1,0 +1,35 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Definition of Retail Party Search Result",
+	"definitions": {
+		"partyRetail": {
+			"description": "Retail Party's details",
+			"type": "object",
+			"properties": {
+				"partyName": {
+					"$ref": "commonSchemaV1_0.json#/definitions/partyName"
+				},
+				"birthDate": {
+					"$ref": "commonSchemaV1_0.json#/definitions/birthDate"
+				},
+				"gender": {
+					"$ref": "commonSchemaV1_0.json#/definitions/gender"
+				},
+				"partyType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/partyType"
+				},
+				"partyEntityType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/partyEntityType"
+				},
+				"nationality": {
+					"$ref": "commonSchemaV1_0.json#/definitions/nationality"
+				},
+				"nationalityDesc": {
+					"description": "Nationality Description",
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

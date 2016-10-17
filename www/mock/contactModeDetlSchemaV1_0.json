@@ -1,0 +1,29 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Contact mode details",
+	"definitions": {
+		"contactModeDetl": {
+			"description": "Contact mode details",
+			"type": "object",
+			"properties": {
+				"contactMode": {
+					"description": "Contact mode",
+					"type": "string"
+				},
+				"contactModeDesc": {
+					"description": "Contact mode description",
+					"type": "string"
+				},
+				"isRequiredContactMode": {
+					"description": "Indicates if contact mode is mandatory for default alert preference  ",
+					"type": "boolean"
+				},
+				"isPrefContactMode": {
+					"description": "Indicates if preferred contact mode",
+					"type": "boolean"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

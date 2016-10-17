@@ -1,0 +1,88 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Schema for Tax Related details",
+	"definitions": {
+		"taxRelated": {
+			"description": "Tax Related details",
+			"type": "object",
+			"properties": {
+				"taxDetl": {
+					"description": "Party's tax details",
+					"type": "array",
+					"maxItems": 10,
+					"items": [
+						{
+							"type": "object",
+							"properties": {
+								"taxResidenceCtry": {
+									"description": "Party Tax Residence Country",
+									"type": "string",
+									"maxLength": 3,
+									"maxlength": 3
+								},
+								"taxType": {
+									"description": "Tax Type",
+									"type": "string"
+								},
+								"taxFormType": {
+									"description": "Party Withholding Certification Type",
+									"type": "string"
+								},
+								"taxFormDate": {
+									"description": "Date on Tax form",
+									"type": "string",
+									"format": "date"
+								},
+								"taxCategory": {
+									"description": "Party Tax Category",
+									"type": "string"
+								},
+								"taxCategoryUpdDateTime": {
+									"description": "Tax Category update date and time",
+									"type": "string",
+									"format": "date-time"
+								},
+								"taxReviewStatus": {
+									"description": "Party Tax review status",
+									"type": "string"
+								},
+								"taxReviewStatusUpdDateTime": {
+									"description": "Tax review status update date and time",
+									"type": "string",
+									"format": "date-time"
+								},
+								"globalTaxId": {
+									"$ref": "commonSchemaV1_0.json#/definitions/globalTaxId"
+								},
+								"lastUpdDate": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+								},
+								"lastUpdTime": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdTime"
+								},
+								"lastUpdMainUnit": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdMainUnit"
+								},
+								"lastUpdId": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdId"
+								}
+							},
+							"additionalProperties": false
+						}
+					],
+					"additionalItems": false
+				},
+				"isUSTaxApproved": {
+					"description": "Indicates if application for US tax exemption/reduction has been approved by US Tax Authority",
+					"type": "boolean"
+				},
+				"USTaxApprovalDate": {
+					"description": "Date of US Tax Authority approval of tax exemption/reduction application for non-US citizen",
+					"type": "string",
+					"format": "date"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

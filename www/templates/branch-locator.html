@@ -1,0 +1,57 @@
+<ion-view view-title="Branches">
+  <ion-nav-buttons side="secondary">
+    <button class="button" ng-click="openSearchRadiusPopover($event)" >
+      <i class="ion-android-radio-button-on"></i>
+      {{searchRadiusInKilometersPopover.value}} km
+    </button>
+  </ion-nav-buttons>
+
+  <script id="search-radius-popover.html" type="text/ng-template">
+    <ion-popover-view style="height: 115px;left: 0px;width:95%;">
+      <ion-header-bar>
+        <h1 class="title">Search Radius</h1>
+      </ion-header-bar>
+      <ion-content>
+        <div class="item range">
+          <i class="ion-ios-circle-outline"></i>
+          <input type="range" min="{{searchRadiusInKilometersPopover.min}}" max="{{searchRadiusInKilometersPopover.max}}" ng-model="searchRadiusInKilometersPopover.value">
+          <i class="ion-ios-circle-filled"></i>
+        </div>
+      </ion-content>
+    </ion-popover-view>
+  </script>
+  <ion-content>
+    <div class="row" style="height:50%;">
+      <div class="col-10" style="display: flex;align-items: center;justify-content: center;"> <a class="button button-icon icon ion-ios-arrow-back" ng-click="previousSlide()"></a></div>
+      <div class="col-80">
+        <ion-slide-box delegate-handle="branch-locator-dlg" does-continue="true" auto-play="false" show-pager="false" active-slide="1" on-slide-changed="loadSlideDisplay($index)" ng-if="branchList.length">
+          <ion-slide ng-repeat="branch in slidesDisplay">
+            <div class="list card">
+
+              <div class="item item-avatar">
+                <img ng-src="{{}}">
+                <h2>{{branch.name}}</h2>
+                <p>{{branch.postal_code}}</p>
+              </div>
+
+              <div class="item-text-wrap" style="text-align: left;padding: 10px;">
+                <p>{{branch.address}}</p>
+                <p>{{branch.operatingHours}}</p>
+              </div>
+
+              <a class="item item-icon-left assertive" ng-click="openBookAppointmentDLG(branch)">
+                <i class="icon ion-ios-person"></i>
+                Book Appointment
+              </a>
+
+            </div>
+          </ion-slide>
+        </ion-slide-box>
+
+      </div>
+      <div class="col-10" style="display: flex;align-items: center;justify-content: center;"> <a class="button button-icon icon ion-ios-arrow-forward" ng-click="nextSlide()"></a></div>
+    </div>
+
+    <div id="map" data-tap-disabled="true" style="height:50%;"></div>
+  </ion-content>
+</ion-view>

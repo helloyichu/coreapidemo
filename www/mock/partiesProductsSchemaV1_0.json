@@ -1,0 +1,42 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "http://www.xxx.com.sg/api/v1/parties",
+	"title": "products",
+	"description": "Core schema for list of products",
+	"type": "object",
+	"oneOf": [
+		{
+			"description": "PartyProducts",
+			"type": "object",
+			"properties": {
+				"commonDetl": {
+					"$ref": "commonHeaderSchemaV1_0.json#/definitions/commonDetl"
+				},
+				"partyId": {
+					"description": "Party Identifier",
+					"type": "string"
+				},
+				"productsList": {
+					"description": "List of Products",
+					"type": "array",
+					"items": {
+						"$ref": "productSchemaV1_0.json#/definitions/product"
+					}
+				},
+				"recCtrlOut": {
+					"$ref": "commonSchemaV1_0.json#/definitions/recCtrlOut"
+				}
+			},
+			"additionalProperties": false
+		},
+		{
+			"error": {
+				"commonDetl": {
+					"$ref": "commonHeaderSchemaV1_0.json#/definitions/commonDetl"
+				},
+				"$ref": "errorSchemaV1_0.json#/definitions/error"
+			},
+			"$ref": "errorSchemaV1_0.json#/definitions/error"
+		}
+	]
+}

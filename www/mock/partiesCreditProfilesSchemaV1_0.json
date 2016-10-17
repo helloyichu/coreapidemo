@@ -1,0 +1,798 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "http://www.xxx.com.sg/api/v1/partiesRelationships",
+	"title": "Party Credit Profile",
+	"description": "Schema for Party's Credit Profile",
+	"type": "object",
+	"oneOf": [
+		{
+			"description": "Party Credit Profile",
+			"type": "object",
+			"properties": {
+				"commonDetl": {
+					"$ref": "commonHeaderSchemaV1_0.json#/definitions/commonDetl"
+				},
+				"partyId": {
+					"$ref": "commonSchemaV1_0.json#/definitions/partyId"
+				},
+				"partyInternalId": {
+					"description": "Party Internal Identifier",
+					"type": "object",
+					"oneOf": [
+						{
+							"$ref": "commonSchemaV1_0.json#/definitions/CISInternalId"
+						},
+						{
+							"$ref": "commonSchemaV1_0.json#/definitions/partyInternalId"
+						}
+					]
+				},
+				"partyDoc": {
+					"description": "Details of party's identification documents",
+					"type": "array",
+					"maxItems": 10,
+					"items": [
+						{
+							"$ref": "commonSchemaV1_0.json#/definitions/partyDoc"
+						}
+					],
+					"additionalItems": false
+				},
+				"altPartyInternalId": {
+					"$ref": "commonSchemaV1_0.json#/definitions/altPartyInternalId"
+				},
+				"partyDetl": {
+					"description": "Party details",
+					"type": "object",
+					"properties": {
+						"birthDate": {
+							"description": "Birth Date",
+							"$ref": "commonSchemaV1_0.json#/definitions/birthDate"
+						},
+
+						"gender": {
+							"$ref": "commonSchemaV1_0.json#/definitions/gender"
+						},
+						"nationality": {
+							"$ref": "commonSchemaV1_0.json#/definitions/nationality"
+						},
+						"nationalityDesc": {
+							"description": "Description of Country of Nationality",
+							"type": "string"
+						},
+						"maritalStatus": {
+							"description": "Marital Status.  Values are: '1'- Single, '2'- Married, '3'- Separated, '4'- Divorced, '5'- Widowed  '6'- Unknown, '7'- Others",
+							"type": "string"
+						},
+						"maritalStatusDesc": {
+							"description": "Marital Status Description.  Values are: '1'- Single, '2'- Married, '3'- Separated, '4'- Divorced, '5'- Widowed  '6'- Unknown, '7'- Others",
+							"type": "string"
+						},
+						"isIDTheft": {
+							"description": "Indicates if Party's identity has been compromised. Values are: 'true', 'false'",
+							"type": "boolean"
+						},
+						"isPartyUnderDebtMgtProg": {
+							"description": "Indicates if Party is under a debt management program.  Values are: 'true', 'false'",
+							"type": "boolean"
+						},
+						"earliestKnownCreditDate": {
+							"description": "Date of earliest known Credit Account",
+							"type": "string",
+							"format": "date"
+						},
+						"isCreditExceeded": {
+							"description": "Indicates credit exceeded for Party. Values are: 'true', 'false'",
+							"type": "boolean"
+						},
+						"creditLimitDetl": {
+							"description": "Credit Limit Details",
+							"type": "array",
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"limitType": {
+											"description": "Type of Credit Limit. Values are: 'SECURED'- Secured, 'UNSECURED'- Unsecured, 'EXEMPTED' - Exempted.",
+											"type": "string"
+										},
+										"creditLimit": {
+											"description": "Credit Limit",
+											"$ref": "commonSchemaV1_0.json#/definitions/amount"
+										}
+									},
+									"additionalProperties": false
+								}
+							],
+							"additionalItems": false
+						},
+						"outstandingBalanceDetl": {
+							"description": "Outstanding Balance Details",
+							"type": "array",
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"balanceType": {
+											"description": "Balance Type. Values are: 'SECURED'- Secured, 'UNSECURED'- Unsecured, 'IBUNSECURED'- Interest Bearing Unsecured.",
+											"type": "string"
+										},
+										"balanceAsAt": {
+											"description": "Year and month of balance date. Format is YYYYMM",
+											"type": "string"
+										},
+										"outstandingBalance": {
+											"description": "Outstanding Balance Amount",
+											"$ref": "commonSchemaV1_0.json#/definitions/amount"
+										}
+									},
+									"additionalProperties": false
+								}
+							],
+							"additionalItems": false
+						},
+						"partyDocDetl": {
+							"description": "Party Identification Document Details",
+							"type": "object",
+							"properties": {
+								"documentType": {
+									"description": "Document Type",
+									"type": "string"
+								},
+								"documentNumber": {
+									"description": "Document Number",
+									"type": "string"
+								},
+								"lastUpdDate": {
+									"description": "Date of last update",
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+								}
+							},
+							"additionalProperties": false
+						},
+						"partyNameDetl": {
+							"description": "Party Name Details",
+							"type": "object",
+							"properties": {
+								"fullName": {
+									"description": "Party's Full Name",
+									"type": "string"
+								},
+								"name": {
+									"description": "Party's Name",
+									"type": "object",
+									"properties": {
+										"firstName": {
+											"description": "Party's First Name",
+											"type": "string"
+										},
+										"middleName": {
+											"description": "Party's Middle Name",
+											"type": "string"
+										},
+										"lastName": {
+											"description": "Party's Last Name (Surname)",
+											"type": "string"
+										}
+									},
+									"additionalProperties": false
+								},
+								"additionalPartyName": {
+									"description": "Additional Party Name Details",
+									"type": "array",
+									"items": [
+										{
+											"type": "object",
+											"properties": {
+												"fullname": {
+													"description": "Party's Full Name",
+													"type": "string"
+												},
+												"lastUpdDate": {
+													"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+												}
+											},
+											"additionalProperties": false
+										}
+									],
+									"additionalItems": false
+								}
+							},
+							"additionalProperties": false
+						},
+						"addressDetl": {
+							"description": "Address Details",
+							"type": "object",
+							"properties": {
+								"address": {
+									"description": "Address",
+									"type": "string"
+								},
+								"postalCode": {
+									"description": "Postal Code",
+									"type": "string"
+								},
+								"lastUpdDate": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+								}
+							},
+							"additionalProperties": false
+						},
+						"employmentDetl": {
+							"description": "Employment Details",
+							"type": "object",
+							"properties": {
+								"employerName": {
+									"description": "Employer Name",
+									"type": "string"
+								},
+								"jobTitle": {
+									"description": "Job Title",
+									"type": "string"
+								},
+								"occupation": {
+									"description": "Occupation",
+									"type": "string"
+								},
+								"lastUpdDate": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+								}
+							},
+							"additionalProperties": false
+						}
+					},
+					"additionalProperties": false
+				},
+				"enquiryDetl": {
+					"description": "Enquiry Details",
+					"type": "object",
+					"properties": {
+						"enquiryReference": {
+							"description": "Enquiry Reference Number",
+							"type": "string"
+						},
+						"enquiryType": {
+							"description": "Enquiry Type.  Values are: 'GT'- Guarantor/Surety, 'NA'- New Application, 'RV'- Review",
+							"type": "string"
+						},
+						"applicantType": {
+							"description": "Applicant Type.  Values are: 'P'- Primary, 'S'- Secondary",
+							"type": "string"
+						},
+						"jointAccount": {
+							"description": "Joint Account.  Values are: 'J'- Joint, 'S'- Single",
+							"type": "string"
+						},
+						"productSubType": {
+							"description": ".  Values are: 'PLA'- Personal Loan, 'CLA'- Car Loan, 'MOR'- Mortgage Loan, 'SELF'- Self",
+							"type": "string"
+						},
+						"previousEnquiryDetl": {
+							"description": "Previous Enquiries Details. Contains previous enquiry data applicable to each successful enquiry made on a consumer in the last 6 years which include enquiries via B2B, browser and physical reports.",
+							"type": "array",
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"enquiryType": {
+											"description": "Enquiry Type.  Values are: 'GT'- Guarantor/Surety, 'NA'- New Application, 'RV'- Review",
+											"type": "string"
+										},
+										"enquiryTypeDesc": {
+											"description": "Enquiry Type Description",
+											"type": "string"
+										},
+										"productSubType": {
+											"description": "Product Subtype. Values are: 'PLA'- Personal Loan, 'CLA'- Car Loan, 'MOR'- Mortgage Loan, 'SELF'- Self",
+											"type": "string"
+										},
+										"productSubTypeDesc": {
+											"description": "Product Subtype Description",
+											"type": "string"
+										},
+										"jointAccount": {
+											"description": "Joint Account.  Values are: 'J'- Joint, 'S'- Single",
+											"type": "string"
+										},
+										"lastUpdDate": {
+											"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+										}
+									},
+										"additionalProperties": false
+								}
+							],
+								"additionalItems": false
+						}
+					},
+					"additionalProperties": false
+				},
+				"accountStatusHistory": {
+					"description": "Account Status History",
+					"type": "array",
+					"items": [
+						{
+							"type": "object",
+							"properties": {
+								"bankName": {
+									"description": "Bank Name",
+									"type": "string"
+								},
+								"productSubType": {
+									"description": "Product Subtype",
+									"type": "string"
+								},
+								"productSubTypeDesc": {
+									"description": "Product Subtype Description",
+									"type": "string"
+								},
+								"jointAccount": {
+									"description": "Joint Account.  Values are: 'J'- Joint, 'S'- Single",
+									"type": "string"
+								},
+								"openDate": {
+									"$ref": "commonSchemaV1_0.json#/definitions/openDate"
+								},
+								"closeDate": {
+									"$ref": "commonSchemaV1_0.json#/definitions/closeDate"
+								},
+								"paymentStatus": {
+									"description": "Indicates payment conduct of the account for the past 12 cycles.  Values are: 'A', 'B', 'C', '*','S'.",
+									"type": "array",
+									"maxItems": 12,
+									"items": {
+										"type": "string",
+										"maxLength": 1
+									}
+								},
+								"cashAdvanceStatus": {
+									"description": "Cash advance status / Balance transfer indicator for the past 12 cycles.  Values are: 'Y'- Indicates there is cash advance/balance transfer activity or balance,'N'- Indicates no cash advance/balance transfer activity or balance.",
+									"type": "array",
+									"maxItems": 12,
+									"items": {
+										"type": "string",
+										"maxLength": 1
+									}
+								},
+								"fullPaymentIndicator": {
+									"description": "Full payment indicator for the past 12 cycles.  Values are: 'Y'- Indicates full payment has been made for that cycle,'N'- Indicates full payment was not made for that cycle.",
+									"type": "array",
+									"maxItems": 12,
+									"items": {
+										"type": "string",
+										"maxLength": 1
+									}
+								},
+								"overdueBalance": {
+									"description": "Joint Account.  Values are: 'J'- Joint, 'S'- Single",
+									"type": "string"
+								},
+								"lastUpdDate": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+								}
+						},
+							"additionalProperties": false
+						}
+					],
+						"additionalItems": false
+				},
+				"defaultHistoryDetl": {
+					"description": "Bad debt/payment default as reported by Credit Bureau members",
+					"type": "array",
+					"items": [
+						{
+							"type": "object",
+							"properties": {
+								"bankName": {
+									"description": "Bank Name",
+									"type": "string"
+								},
+								"productSubType": {
+									"description": "Product subtype",
+									"type": "string"
+								},
+								"productSubTypeDesc": {
+									"description": "Product subtype Description",
+									"type": "string"
+								},
+								"originalAmount": {
+									"description": "Amount of bad debt record when loaded into CBS",
+									"$ref": "commonSchemaV1_0.json#/definitions/amount"
+								},
+								"outstandingAmount": {
+									"description": "Total outstanding amount at the point of charge off, including legal fee and admin fee",
+									"$ref": "commonSchemaV1_0.json#/definitions/amount"
+								},
+								"status": {
+									"description": "Bad Debt Status.  Values are: 'NS'- Negotiated Settlement, 'FS'- Full Settlement, 'PP'- Partial Payment', 'OS'- Outstanding",
+									"type": "string"
+								},
+								"settlementDate": {
+									"description": "Settlement Date",
+									"type": "string",
+									"format": "date"
+								},
+								"lastUpdDate": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+								}
+							},
+							"additionalProperties": false
+						}
+					],
+						"additionalItems": false
+				},
+				"bankruptcyDetl": {
+					"description": "Bankruptcy Details",
+					"type": "object",
+					"properties": {
+						"bankruptcyOrder": {
+							"description": "Bankruptcy Order",
+							"type": "array",
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"bankruptcyNumber": {
+											"description": "Bankruptcy Number",
+											"type": "string"
+										},
+										"orderDate": {
+											"description": "Order Date",
+											"type": "string",
+											"format": "date"
+										},
+										"originalOrderDate": {
+											"description": "Original Order Date",
+											"type": "string",
+											"format": "date"
+										},
+										"petitionDate": {
+											"description": "Petition Date",
+											"type": "string",
+											"format": "date"
+										},
+										"gazetteDate": {
+											"description": "Gazette Date",
+											"type": "string",
+											"format": "date"
+										},
+										"orderNature": {
+											"description": "Nature of Bankruptcy Order",
+											"type": "string"
+										}
+									},
+									"additionalProperties": false
+								}
+							],
+								"additionalItems": false
+						},
+						"litigationWrit": {
+							"description": "Litigation Writ",
+							"type": "array",
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"documentNumber": {
+											"description": "Document Number",
+											"type": "string"
+										},
+										"caseSequence": {
+											"description": "Case Sequence",
+											"type": "integer"
+										},
+										"caseNumber": {
+											"description": "Case Number",
+											"type": "string"
+										},
+										"defendantName": {
+											"description": "Defendant Name",
+											"type": "string"
+										},
+										"courtCode": {
+											"description": "Court Code",
+											"type": "string"
+										},
+										"fileDate": {
+											"description": "File Date",
+											"type": "string",
+											"format": "date"
+										},
+										"claimNature": {
+											"description": "Nature of Bankruptcy Order",
+											"type": "string"
+										},
+										"statusDesc": {
+											"description": "Status Description",
+											"type": "string"
+										},
+										"statusDate": {
+											"description": "Status Date",
+											"type": "string",
+											"format": "date"
+										},
+										"claimlAmount": {
+											"description": "Claim Amount",
+											"$ref": "commonSchemaV1_0.json#/definitions/amount"
+										},
+										"plaintiffName": {
+											"description": "Plaintiff Name",
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"lastUpdDate": {
+											"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+										}
+									},
+									"additionalProperties": false
+								}
+							],
+								"additionalItems": false
+						},
+						"bankruptcyPetition": {
+							"description": "Bankruptcy Petition",
+							"type": "array",
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"documentNumber": {
+											"description": "Document Number",
+											"type": "string"
+										},
+										"caseSequence": {
+											"description": "Case Sequence",
+											"type": "integer"
+										},
+										"caseNumber": {
+											"description": "Case Number",
+											"type": "string"
+										},
+										"defendantName": {
+											"description": "Defendant Name",
+											"type": "string"
+										},
+										"courtCode": {
+											"description": "Court Code",
+											"type": "string"
+										},
+										"fileDate": {
+											"description": "File Date",
+											"type": "string",
+											"format": "date"
+										},
+										"claimNature": {
+											"description": "Nature of Bankruptcy Order",
+											"type": "string"
+										},
+										"statusDesc": {
+											"description": "Status Description",
+											"type": "string"
+										},
+										"statusDate": {
+											"description": "Status Date",
+											"type": "string",
+											"format": "date"
+										},
+										"claimlAmount": {
+											"description": "Claim Amount",
+											"$ref": "commonSchemaV1_0.json#/definitions/amount"
+										},
+										"plaintiffName": {
+											"description": "Plaintiff Name",
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"lastUpdDate": {
+											"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+										}
+									},
+									"additionalProperties": false
+								}
+							],
+								"additionalItems": false
+						}
+					},
+					"additionalProperties": false
+				},
+				"publicNotice": {
+					"description": "Public notice data excluding bankruptcy",
+					"type": "array",
+					"items": [
+						{
+							"type": "object",
+							"properties": {
+								"noticeType": {
+									"description": "Notice Type",
+									"type": "string"
+								},
+								"noticeTypeDesc": {
+									"description": "Notice Type Description",
+									"type": "string"
+								},
+								"publication": {
+									"description": "Publication of the notice",
+									"type": "string"
+								},
+								"noticeContent": {
+									"description": "Notice Content",
+									"type": "string"
+								},
+								"lastUpdDate": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+								}
+							},
+							"additionalProperties": false
+						}
+					],
+						"additionalItems": false
+				},
+				"debtRepaymentSchemeDetl": {
+					"description": "Public notice data excluding bankruptcies",
+					"type": "array",
+					"items": [
+						{
+							"type": "object",
+							"properties": {
+								"caseNumber": {
+									"description": "Case Number",
+									"type": "string"
+								},
+								"status": {
+									"description": "Status",
+									"type": "string"
+								},
+								"startDate": {
+									"$ref": "commonSchemaV1_0.json#/definitions/startDate"
+								},
+								"endDate": {
+									"$ref": "commonSchemaV1_0.json#/definitions/endDate"
+								},
+								"failureDate": {
+									"description": "Failure Date of Debt Repayment Scheme",
+									"type": "string",
+									"format": "date"
+								}
+							},
+							"additionalProperties": false
+						}
+					],
+						"additionalItems": false
+				},
+				"creditBureauScoreDetl": {
+					"description": "Credit Bureau Score Details",
+					"type": "object",
+					"properties": {
+						"additionalInfo": {
+							"description": "Additional Information",
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"diagramFileName": {
+							"description": "Diagram File Name",
+							"type": "string"
+						},
+						"scoreCardDetl": {
+							"description": "Scorecard Information",
+							"type": "array",
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"fieldName": {
+											"description": "Scorecard field name",
+											"type": "string"
+										},
+										"fieldDesc": {
+											"description": "Scorecard field description",
+											"type": "array",
+											"maxItems": 4,
+											"items": {
+												"type": "string"
+											}
+										},
+										"fieldValue": {
+											"description": "Scorecard field value",
+											"type": "string"
+										}
+									},
+									"additionalProperties": false
+								}
+							],
+								"additionalItems": false
+						},
+						"keyFactorDetl": {
+							"description": "Key Factor information",
+							"type": "array",
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"fieldName": {
+											"description": "Key factor field name",
+											"type": "string"
+										},
+										"fieldDesc": {
+											"description": "Key factor field description",
+											"type": "array",
+											"maxItems": 4,
+											"items": {
+												"type": "string"
+											}
+										},
+										"fieldValue": {
+											"description": "Key factor field value",
+											"type": "string"
+										}
+									},
+									"additionalProperties": false
+								}
+							],
+								"additionalItems": false
+						}
+					},
+						"additionalProperties": false
+				},
+				"memoDetl": {
+					"description": "Memo/Narratives. Provides any comments that members, individuals or third parties may have on the report's contents.",
+					"type": "array",
+					"items": [
+						{
+							"type": "object",
+							"properties": {
+								"memoType": {
+									"description": "Memo Type.  Values are: 'NOADV'- No Adverse Notice, 'General', 'ID Theft', 'Debt Management Programme'",
+									"type": "string"
+								},
+								"memo": {
+									"description": "Memo content",
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"lastUpdDate": {
+									"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+								}
+							},
+							"additionalProperties": false
+						}
+					],
+						"additionalItems": false
+				},
+				"additionalReport": {
+					"description": "Additional Credit Report",
+					"type": "array",
+					"items": [
+						{
+							"type": "object",
+							"properties": {
+								"reportDate": {
+									"description": "Report Date",
+									"type": "string",
+									"format": "date"
+								},
+								"reportTime": {
+									"description": "Report Time",
+									"type": "string",
+									"format": "time"
+								}
+							},
+							"additionalProperties": false
+						}
+					],
+						"additionalItems": false
+				}
+			},
+				"additionalProperties": false
+		},
+		{
+			"$ref": "errorSchemaV1_0.json#/definitions/error"
+		}
+	]
+}

@@ -1,0 +1,58 @@
+<ion-modal-view id='edit-popup'>
+  <ion-header-bar>
+    <h1 class="title"><span ng-bind="confirmationDLGTitle"></span></h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeConfirmation()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+
+    <ion-slide-box ng-init='disableSwipe()' delegate-handle="confirmation-dlg" does-continue="false" auto-play="false" show-pager="false">
+      <ion-slide>
+      <form ng-submit="">
+        <div class="list">
+          <div class="item">
+            <ion-list  can-swipe="true">
+              <ion-item ng-repeat="harvest in submissionList">
+                <div class="item-icon-left" style ="float:left"><i ng-class="[harvest.value =='M'? harvest.icon2 : harvest.icon1, harvest.isEdited? 'red-icon':'black-icon' ]"></i> &nbsp;<span ng-class="harvest.isEdited? 'red-text':'black-text'" ng-bind="harvest.label"></span><span ng-class="harvest.isEdited? 'red-text':'black-text'" ng-bind="harvest.value"></span></div>
+                <ion-delete-button class="ion-minus-circled" ng-click="removeSubmissionRecord($index)">
+                </ion-delete-button>
+                <ion-option-button class="button-info" style="background-color: #ff0000;color: white;"
+                                   ng-click="removeSubmissionRecord($index)">
+                  <i class="ion-close" style="margin-left: 7px;"></i>
+                </ion-option-button>
+              </ion-item>
+            </ion-list>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="col-50"><button class="button button-block button-positive" ng-disabled="submissionList.length===0 || activateSpinner === true" ng-click="submit()">Ok</button></div>
+              <div class="col-50"><button class="button button-block" ng-click="confirmationDoNotSubmit()" ng-disabled="activateSpinner === true">Cancel</button></div></div>
+          </div>
+        </div>
+      </form>
+      </ion-slide>
+      <ion-slide>
+        <div class="list">
+          <div class="item">
+              <div class="row" style="text-align: center;">
+                  <div class="col-33 col-offset-33"><i class="ion-checkmark-circled" style="color:green; font-size: 120px" ></i></div>
+              </div>
+            <div class="row" style="text-align: center;margin-top:20px;">
+              <div class="col-33 col-offset-20"><span style="font-size: 55px">Success!</span></div>
+            </div>
+
+          </div>
+          <div class="item">
+            <div class="row">
+              <button class="button button-block button-positive" ng-click="closeConfirmation()">Ok</button>
+            </div>
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+
+    <ion-spinner ng-if="activateSpinner" style="position: fixed;top: 270px;left: 169px;z-index: 99;"></ion-spinner>
+
+  </ion-content>
+</ion-modal-view>

@@ -1,0 +1,377 @@
+<ion-modal-view id='add-user-popup'>
+  <ion-header-bar>
+    <h1 class="title"><span ng-bind="addAccountDLGTitle"></span></h1>
+    <div class="buttons">
+      <button class="button" style="background-color: white" ng-click="closeAddAccountDLG()" ng-if="enableNext()"><i class="ion-close"></i></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <ion-slide-box ng-init='disableSwipe()' on-slide-changed="slideChanged($index)" delegate-handle="add-user-dlg" does-continue="false" auto-play="false" show-pager="false">
+      <ion-slide>
+        <ion-item class="animated fadeInLeftBig" style="height:500px; border-color:transparent;">
+          <div style="margin-top: 130px; text-align: center">
+            <span style="font-size: 30px;">Welcome to</span>
+          </div>
+          <div style="margin-top: 30px;text-align: center">
+            <img src="img/dbs-logo.png" style=" max-width: 60%;max-height: 60%;" alt=""/>
+          </div>
+          <div style="margin-top: 30px; text-align: center">
+            <input style="font-size: 25px; color:gray;margin-left: 115px;width:50%" type="text" id="new-username" ng-model="newUserDetails.parties.partyDetl.partyRetail.partyName.name.firstName" placeholder="New User">
+          </div>
+        </ion-item>
+      </ion-slide>
+      <ion-slide>
+        <form name="form" novalidate>
+        <div class="list">
+          <div class="item item-avatar" style="padding-left: 16px;" ng-click="takePicture()">
+            <img id="welcome-page-profile" src="img/default-profile-pic.png" style="height: 90px;max-width: 90px;max-height: 90px;position: static;margin: 10px 10px 10px 0px;float: left;">
+            <h2 style="margin-top: 37px;">{{newUserDetails.parties.partyDetl.partyRetail.partyName.name.firstName === '' ?' ':newUserDetails.parties.partyDetl.partyRetail.partyName.name.firstName}}</h2>
+            <p style="font-size: 13px;">{{photoTakenFlag? 'Thank You!' : 'Click here to let us have a photo of you'}}</p>
+          </div>
+          <label class="item item-input item-floating-label">
+            <span class="input-label"><b>First Name</b></span>
+            <input name="firstName" type="text" placeholder="First Name" ng-model="newUserDetails.parties.partyDetl.partyRetail.partyName.name.firstName" required>
+          </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label"><b>Last Name</b></span>
+            <input name="lastName" type="text" placeholder="Last Name" ng-model="newUserDetails.parties.partyDetl.partyRetail.partyName.name.lastName" required>
+          </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label"><b>Middle Name</b></span>
+            <input name="middleName" type="text" placeholder="Middle Name" ng-model="newUserDetails.parties.partyDetl.partyRetail.partyName.name.middleName">
+          </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label"><b>Identification Number</b></span>
+            <input name="IdentificationNumber" type="text" placeholder="Identification Number" ng-model="newUserDetails.parties.partyInternalId.CISInternalId.CISCIN" required>
+          </label>
+        </div>
+        </form>
+      </ion-slide>
+      <ion-slide>
+
+        <form name="form" novalidate>
+          <div class="list list-inset">
+
+            <a class="item item-text-wrap" ng-repeat="doc in newUserDetails.parties.partyDoc.item" ng-click="showDocumentPopup(doc.docNumber)">
+              <div class="row">
+                <div class="col-30">
+                  <div><span><b>Document Number:</b></span></div>
+                  <div><span ng-bind="doc.docNumber"></span></div>
+                </div>
+
+                <div class="col-30 col-offset-33">
+                  <div><span><b>Document Type:</b></span></div>
+                  <div ng-switch="doc.docType">
+                    <span ng-switch-when="01">Singapore ID</span>
+                    <span ng-switch-when="02">Hong Kong ID</span>
+                    <span ng-switch-when="03">Thai ID</span>
+                    <span ng-switch-when="04">Macau ID</span>
+                    <span ng-switch-when="05">Macau Bilhete Identidade</span>
+                    <span ng-switch-when="06">Identity Card – Foreign</span>
+                    <span ng-switch-when="07">Taiwan ID – Citizens</span>
+                    <span ng-switch-when="08">Taiwan ID – Foreigners</span>
+                    <span ng-switch-when="09">China ID (Shen Feng Zheng)</span>
+                    <span ng-switch-when="10">Indonesian ID</span>
+                    <span ng-switch-when="20">Passport No – Local</span>
+                    <span ng-switch-when="21">Passport No – Foreign</span>
+                    <span ng-switch-when="22">Birth Certificate</span>
+                    <span ng-switch-when="23">Driving Licence No</span>
+                    <span ng-switch-when="24">Social Security System ID</span>
+                    <span ng-switch-when="25">Government Service ID</span>
+                    <span ng-switch-when="26">Tax ID</span>
+                    <span ng-switch-when="27">Travel Document</span>
+                    <span ng-switch-when="28">Tax ID – Foreign Incorporated Company</span>
+                    <span ng-switch-when="29">Residency Certificate</span>
+                    <span ng-switch-when="30">Election ID</span>
+                    <span ng-switch-when="31">Photo ration ID</span>
+                    <span ng-switch-when="32">Military ID – Officer</span>
+                    <span ng-switch-when="33">Military ID – Non-Officer</span>
+                    <span ng-switch-when="34">Police ID</span>
+                    <span ng-switch-when="35">Diplomat ID</span>
+                    <span ng-switch-when="36">Work Permit</span>
+                    <span ng-switch-when="51">Business Registration No</span>
+                    <span ng-switch-when="52">Government / Statutory Board / School</span>
+                    <span ng-switch-when="53">Association / Club / Society</span>
+                    <span ng-switch-when="54">Sole Proprietorship / Partnership</span>
+                    <span ng-switch-when="55">Financial Institution</span>
+                    <span ng-switch-when="56">Charity / Trust</span>
+                    <span ng-switch-when="60">Certificate of Incorporation – Local</span>
+                    <span ng-switch-when="61">Certificate of Incorporation – Foreign</span>
+                    <span ng-switch-when="62">Credit Bureau ID</span>
+                    <span ng-switch-when="63">Business License</span>
+                    <span ng-switch-when="64">Tax ID –  Individual without Social Security No (US Only)</span>
+                    <span ng-switch-when="65">Tax ID –  Temporary </span>
+                    <span ng-switch-when="66">Tax ID –  Preparer</span>
+                    <span ng-switch-when="67">India ID – Aadhaar Number</span>
+                    <span ng-switch-when="97">Control Account</span>
+                    <span ng-switch-when="98">Internal Generated No</span>
+                    <span ng-switch-when="99">Miscellaneous</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <div class="row" style="margin-top: 20px">
+              <div class="col-80 col-offset-10" style="border: 4px dashed #aaaaaa;height: 150px;width: 90%;text-align: center;">
+                <a ng-click="showDocumentPopup('add-doc')">
+                  <div style="margin-top:20px"><i class="ion-plus" style="font-size: 64px; color:#aaaaaa;"></i></div>
+                  <div style="margin-top:20px"><span style="font-size: 30px; color:#aaaaaa;"> Add a Document </span></div>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </ion-slide>
+
+      <ion-slide>
+        <div class="list">
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Birth Date</span>
+            <input type="text" placeholder="Birth Date" ng-model="newUserDetails.parties.partyDetl.partyRetail.birthDate" ng-click="openDatePickerBirthDate()">
+          </label>
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Gender
+            </div>
+            <div>
+              <select ng-model="newUserDetails.parties.partyDetl.partyRetail.gender">
+                <option>M</option>
+                <option>F</option>
+              </select>
+            </div>
+          </label>
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Race
+            </div>
+            <div>
+              <select ng-model="newUserDetails.parties.partyDetl.partyRetail.raceDesc">
+                <option ng-repeat="race in raceList track by $index">{{race}}</option>
+              </select>
+            </div>
+          </label>
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Nationality
+            </div>
+            <div>
+              <select ng-model="newUserDetails.parties.partyDetl.partyRetail.nationalityDesc">
+                <option ng-repeat="nationality in nationalityList track by $index">{{nationality}}</option>
+              </select>
+            </div>
+          </label>
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Country of Residence
+            </div>
+            <div>
+              <select ng-model="newUserDetails.parties.partyDetl.partyRetail.residenceCtryDesc">
+                <option ng-repeat="country in countryList track by $index">{{country}}</option>
+              </select>
+            </div>
+          </label>
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Marital Status
+            </div>
+            <div>
+              <select ng-model="newUserDetails.parties.partyDetl.partyRetail.maritalStatusDesc">
+                <option>Single</option>
+                <option>Married</option>
+                <option>Others</option>
+              </select>
+            </div>
+          </label>
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Education Level
+            </div>
+            <div>
+              <select ng-model="newUserDetails.parties.partyDetl.partyRetail.educationLevelDesc">
+                <option ng-repeat="education in educationLevelList">{{education.educationLevelDesc}}</option>
+
+              </select>
+            </div>
+          </label>
+
+
+
+        </div>
+      </ion-slide>
+
+      <ion-slide>
+
+        <form name="form" novalidate>
+          <div class="list list-inset">
+
+            <a class="item item-text-wrap" ng-repeat="contact in newUserDetails.parties.contacts.phoneDetl.item" ng-click="showContactPopup($index)">
+              <div class="row">
+                <div class="col-30">
+                  <div><span><b>Contact Name:</b></span></div>
+                  <div><span ng-bind="contact.contactName"></span></div>
+                </div>
+
+                <div class="col-30 col-offset-33">
+                  <div><span><b>Phone Number</b></span></div>
+                  <div><span ng-bind="contact.phone.phoneNumber"></span></div>
+                </div>
+              </div>
+            </a>
+            <div class="row" style="margin-top: 20px">
+              <div class="col-80 col-offset-10" style="border: 4px dashed #aaaaaa;height: 150px;width: 90%;text-align: center;">
+                <a ng-click="showContactPopup('add-contact')">
+                  <div style="margin-top:20px"><i class="ion-plus" style="font-size: 64px; color:#aaaaaa;"></i></div>
+                  <div style="margin-top:20px"><span style="font-size: 25px; color:#aaaaaa;"> Add a Phone Number </span></div>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </ion-slide>
+
+      <ion-slide>
+          <div class="item" style="border: 1px solid #ddd; margin: 15px;">
+            <div class="list">
+              <div class="item item-avatar" style="padding-left: 16px; border-style: none;">
+                <img id="confirmation-page-profile" ng-src="{{imgData === ''? 'img/default-profile-pic.png' : 'data:image/jpeg;base64,' + imgData}}" style="height: 90px;max-width: 90px;max-height: 90px;position: static;margin: 10px 10px 10px 0px;float: left;">
+                <h2 style="margin-top: 37px;">{{newUserDetails.parties.partyDetl.partyRetail.partyName.salutation}} {{newUserDetails.parties.partyDetl.partyRetail.partyName.name.firstName}} {{newUserDetails.parties.partyDetl.partyRetail.partyName.name.middleName}} {{newUserDetails.parties.partyDetl.partyRetail.partyName.name.lastName}}</h2>
+                <p style="font-size: 13px;">{{newUserDetails.parties.partyInternalId.CISInternalId.CISCIN}}</p>
+              </div>
+
+              <div class="item" style="padding-left: 16px; border-style: none;">
+                <div class="list">
+                  <div ng-repeat="doc in newUserDetails.parties.partyDoc.item">
+                    <div class="item item-divider">
+                      <span>Document Number: {{doc.docNumber}}</span>
+                    </div>
+                    <div class="item">
+                      <div style="font-style: italic; font-weight: bolder;" ng-switch="doc.docType">
+                        <span ng-switch-when="01">Singapore ID</span>
+                        <span ng-switch-when="02">Hong Kong ID</span>
+                        <span ng-switch-when="03">Thai ID</span>
+                        <span ng-switch-when="04">Macau ID</span>
+                        <span ng-switch-when="05">Macau Bilhete Identidade</span>
+                        <span ng-switch-when="06">Identity Card – Foreign</span>
+                        <span ng-switch-when="07">Taiwan ID – Citizens</span>
+                        <span ng-switch-when="08">Taiwan ID – Foreigners</span>
+                        <span ng-switch-when="09">China ID (Shen Feng Zheng)</span>
+                        <span ng-switch-when="10">Indonesian ID</span>
+                        <span ng-switch-when="20">Passport No – Local</span>
+                        <span ng-switch-when="21">Passport No – Foreign</span>
+                        <span ng-switch-when="22">Birth Certificate</span>
+                        <span ng-switch-when="23">Driving Licence No</span>
+                        <span ng-switch-when="24">Social Security System ID</span>
+                        <span ng-switch-when="25">Government Service ID</span>
+                        <span ng-switch-when="26">Tax ID</span>
+                        <span ng-switch-when="27">Travel Document</span>
+                        <span ng-switch-when="28">Tax ID – Foreign Incorporated Company</span>
+                        <span ng-switch-when="29">Residency Certificate</span>
+                        <span ng-switch-when="30">Election ID</span>
+                        <span ng-switch-when="31">Photo ration ID</span>
+                        <span ng-switch-when="32">Military ID – Officer</span>
+                        <span ng-switch-when="33">Military ID – Non-Officer</span>
+                        <span ng-switch-when="34">Police ID</span>
+                        <span ng-switch-when="35">Diplomat ID</span>
+                        <span ng-switch-when="36">Work Permit</span>
+                        <span ng-switch-when="51">Business Registration No</span>
+                        <span ng-switch-when="52">Government / Statutory Board / School</span>
+                        <span ng-switch-when="53">Association / Club / Society</span>
+                        <span ng-switch-when="54">Sole Proprietorship / Partnership</span>
+                        <span ng-switch-when="55">Financial Institution</span>
+                        <span ng-switch-when="56">Charity / Trust</span>
+                        <span ng-switch-when="60">Certificate of Incorporation – Local</span>
+                        <span ng-switch-when="61">Certificate of Incorporation – Foreign</span>
+                        <span ng-switch-when="62">Credit Bureau ID</span>
+                        <span ng-switch-when="63">Business License</span>
+                        <span ng-switch-when="64">Tax ID –  Individual without Social Security No (US Only)</span>
+                        <span ng-switch-when="65">Tax ID –  Temporary </span>
+                        <span ng-switch-when="66">Tax ID –  Preparer</span>
+                        <span ng-switch-when="67">India ID – Aadhaar Number</span>
+                        <span ng-switch-when="97">Control Account</span>
+                        <span ng-switch-when="98">Internal Generated No</span>
+                        <span ng-switch-when="99">Miscellaneous</span>
+                      </div>
+                      <div><span>{{!doc.docIssuePlace || doc.docIssuePlace === ''? '' : 'Document Issue Place: ' + doc.docIssuePlace }}</span></div>
+                      <div><span>{{!doc.docIssueDate || doc.docIssueDate === ''? '' : 'Document Issue Date: ' + doc.docIssueDate }}</span></div>
+                      <div><span>{{!doc.docExpiryDate || doc.docExpiryDate === ''? '' : 'Document Expiry Date: ' + doc.docExpiryDate }}</span></div>
+                    </div>
+                    <div class="item" style="border-top-style: none;" ng-if="doc.isPrimaryDoc === 'true'">
+                      <span ng-class="doc.isPrimaryDoc === 'true'? 'green-text':'' ">{{doc.isPrimaryDoc === 'true'? 'This is my Primary Document' : '' }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="item" style="padding-left: 16px; border-style: none;">
+                <span>{{!newUserDetails.parties.partyDetl.partyRetail.birthDate || newUserDetails.parties.partyDetl.partyRetail.birthDate === ''? '' : 'Birth Date: ' + newUserDetails.parties.partyDetl.partyRetail.birthDate }}</span>
+              </div>
+              <div class="item" style="padding-left: 16px; border-style: none;">
+                <span>{{!newUserDetails.parties.partyDetl.partyRetail.gender || newUserDetails.parties.partyDetl.partyRetail.gender === ''? '' : 'Gender: ' + newUserDetails.parties.partyDetl.partyRetail.gender }}</span>
+              </div>
+              <div class="item" style="padding-left: 16px; border-style: none;">
+                <span>{{!newUserDetails.parties.partyDetl.partyRetail.raceDesc || newUserDetails.parties.partyDetl.partyRetail.raceDesc === ''? '' : 'Race: ' + newUserDetails.parties.partyDetl.partyRetail.raceDesc }}</span>
+              </div>
+              <div class="item" style="padding-left: 16px; border-style: none;">
+                <span>{{!newUserDetails.parties.partyDetl.partyRetail.residenceCtryDesc || newUserDetails.parties.partyDetl.partyRetail.residenceCtryDesc === ''? '' : 'Country of Residence: ' + newUserDetails.parties.partyDetl.partyRetail.residenceCtryDesc }}</span>
+              </div>
+              <div class="item" style="padding-left: 16px; border-style: none;">
+                <span>{{!newUserDetails.parties.partyDetl.partyRetail.maritalStatusDesc || newUserDetails.parties.partyDetl.partyRetail.maritalStatusDesc === ''? '' : 'Marital Status: ' + newUserDetails.parties.partyDetl.partyRetail.maritalStatusDesc }}</span>
+              </div>
+
+              <div class="item" style="padding-left: 16px; border-style: none;">
+                <div class="list">
+                  <div ng-repeat="contact in newUserDetails.parties.contacts.phoneDetl.item">
+                    <div class="item item-divider">
+                      <span>Contact Number: +{{contact.phone.phoneCtryCode}} {{contact.phone.phoneNumber}}</span>
+                    </div>
+                    <div class="item">
+                      <div><span>{{!contact.phone.phoneAreaCode || contact.phone.phoneAreaCode === ''? '' : 'Contact Area Code: ' + contact.phone.phoneAreaCode}}</span></div>
+                      <div><span>{{!contact.contactName || contact.contactName === ''? '' : 'Contact Name: ' + contact.contactName }}</span></div>
+                      <div><span>{{!contact.phone.effectiveDate || contact.phone.effectiveDate === ''? '' : 'Effective Date: ' + contact.phone.effectiveDate}}</span></div>
+                      <div><span>{{!contact.phone.expiryDate || contact.phone.expiryDate === ''? '' : 'Expiry Date: ' + contact.phone.expiryDate }}</span></div>
+                      <div><span ng-class="contact.isPrefPhone === 'true'? 'green-text':'red-text' ">{{contact.isPrefPhone === 'true'? 'This is my Preferred Contact' : 'This is not my Preferred Contact' }}</span></div>
+                      <div><span ng-class="contact.isDoNotSpam === 'true'? 'red-text':'green-text' ">{{contact.isDoNotSpam === 'true'? 'Do Not Send SMS Notifications' : 'Send Me SMS Notifications' }}</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </ion-slide>
+
+      <ion-slide>
+        <div class="list">
+          <div class="item">
+            <div class="row" style="text-align: center;">
+              <div class="col-33 col-offset-33"><i class="ion-checkmark-circled" style="color:green; font-size: 120px" ></i></div>
+            </div>
+            <div class="row" style="text-align: center;margin-top:20px;">
+              <div class="col-33 col-offset-20"><span style="font-size: 55px">Success!</span></div>
+            </div>
+
+          </div>
+          <div class="item">
+            <div class="row">
+              <button class="button button-block button-positive" ng-click="closeAddUserDLG()">Ok</button>
+            </div>
+          </div>
+        </div>
+      </ion-slide>
+
+    </ion-slide-box>
+
+    <ion-spinner ng-if="activateSpinner1" style="position: fixed;top: 270px;left: 169px;z-index: 99;"></ion-spinner>
+  </ion-content>
+  <ion-footer-bar style="height:55px;">
+    <div class="row">
+      <div class="col-33" style="text-align: left;"><a class="button button-icon icon ion-ios-arrow-back" ng-click="previousSlide()" ng-if="enablePrevious()"></a></div>
+      <div class="col-33 col-offset-33" style="text-align: right;"><span style="margin-left: 15px; margin-top: 7px;font-size: 18px;float: left;" ng-if="confirmNewUserDetails"><b>Confirm</b></span><a class="button button-icon icon ion-ios-arrow-forward" ng-click="nextSlide()" ng-if="enableNext()"></a></div>
+    </div>
+  </ion-footer-bar>
+</ion-modal-view>

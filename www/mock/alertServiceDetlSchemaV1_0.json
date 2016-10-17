@@ -1,0 +1,94 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Core schema Alert Service details",
+	"definitions": {
+		"alertServiceList": {
+			"description": "List of alert services",
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/alertServceDetl"
+			}
+		},
+		"contactModeDetl": {
+			"description": "Contact mode details",
+			"type": "object",
+			"properties": {
+				"contactMode": {
+					"description": "Contact mode",
+					"type": "string"
+				},
+				"contactModeDesc": {
+					"description": "Contact mode description",
+					"type": "string"
+				},
+				"isRequiredContactMode": {
+					"description": "Indicates if contact mode is mandatory for default alert preference  ",
+					"type": "boolean"
+				},
+				"isPrefContactMode": {
+					"description": "Indicates if preferred contact mode",
+					"type": "boolean"
+				}
+			},
+			"additionalProperties": false
+		},
+		"alertServceDetl": {
+			"description": "Alert service details",
+			"type": "object",
+			"properties": {
+				"alertServiceType": {
+					"description": "Alert service type",
+					"type": "string"
+				},
+				"alertServiceTypeDesc": {
+					"description": "Alert service type description",
+					"type": "string"
+				},
+				"alertServiceCategory": {
+					"description": "Alert service category",
+					"type": "string"
+				},
+				"alertServiceCategortDesc": {
+					"description": "Alert service category description",
+					"type": "string"
+				},
+				"alertServiceSubCategory": {
+					"description": "Alert service sub category",
+					"type": "string"
+				},
+				"alertServiceSubCategoryDesc": {
+					"description": "Alert service sub category description",
+					"type": "string"
+				},
+				"contactModeList": {
+					"description": "Contact mode details",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/contactModeDetl"
+					}
+				},
+				"thresholdAmountDetl": {
+					"description": "Threshold amount details",
+					"type": "object",
+					"properties": {
+						"minThresholdAmount": {
+							"$ref": "commonSchemaV1_0.json#/definitions/amount"
+						},
+						"minLimit": {
+							"$ref": "commonSchemaV1_0.json#/definitions/amount"
+						},
+						"maxLimit": {
+							"$ref": "commonSchemaV1_0.json#/definitions/amount"
+						},
+						"amountMultiples": {
+							"description": "Multiples of minimum threshold amount ",
+							"type": "number"
+						}
+					},
+					"additionalProperties": false
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

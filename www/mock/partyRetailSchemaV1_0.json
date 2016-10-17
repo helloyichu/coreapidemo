@@ -1,0 +1,187 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Core schema of Retail Party",
+	"definitions": {
+		"partyRetail": {
+			"description": "Demographic information pertaining only to Retail customers",
+			"type": "object",
+			"properties": {
+				"partyName": {
+					"$ref": "commonSchemaV1_0.json#/definitions/partyName"
+				},
+				"partyType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/partyType"
+				},
+				"partyEntityType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/partyEntityType"
+				},
+				"industry": {
+					"description": "Industry Code",
+					"type": "string"
+				},
+				"industryDesc": {
+					"description": "Industry Description",
+					"type": "string"
+				},
+				"birthDate": {
+					"description": "Birth Date",
+					"$ref": "commonSchemaV1_0.json#/definitions/birthDate"
+				},
+				"birthPlace": {
+					"description": "Birth Place",
+					"$ref": "commonSchemaV1_0.json#/definitions/birthPlace"
+				},
+				"birthCtry": {
+					"$ref": "commonSchemaV1_0.json#/definitions/birthCtry"
+				},
+				"gender": {
+					"$ref": "commonSchemaV1_0.json#/definitions/gender"
+				},
+				"nationality": {
+					"$ref": "commonSchemaV1_0.json#/definitions/nationality"
+				},
+				"nationalityDesc": {
+					"description": "Description of Country of Nationality",
+					"type": "string"
+				},
+				"residenceCity": {
+					"description": "City of Residence",
+					"type": "string"
+				},
+				"residenceCtry": {
+					"description": "Country of Residence",
+					"type": "string",
+					"maxLength": 3
+				},
+				"residenceCtryDesc": {
+					"description": "Country of Residence Description",
+					"type": "string"
+				},
+				"race": {
+					"description": "Ethnic Group",
+					"type": "string"
+				},
+				"raceDesc": {
+					"description": "Race Description",
+					"type": "string"
+				},
+				"maritalStatus": {
+					"description": "Marital Status",
+					"type": "string"
+				},
+				"maritalStatusDesc": {
+					"description": "Marital Status Description",
+					"type": "string"
+				},
+				"educationLevel": {
+					"description": "Highest Level of Education",
+					"type": "string"
+				},
+				"employment": {
+					"description": "Information about party's employer",
+					"type": "object",
+					"properties": {
+						"employerName": {
+							"description": "Employer Name",
+							"type": "string"
+						},
+						"jobTitle": {
+							"description": "Job Title",
+							"type": "string"
+						},
+						"occupationGroup": {
+							"description": "Occupation Group",
+							"type": "string"
+						},
+						"occupationGroupDesc": {
+							"description": "Occupation Group Description",
+							"type": "string"
+						},
+						"occupation": {
+							"description": "Occupation",
+							"type": "string"
+						},
+						"employmentStatus": {
+							"description": "Status of Employment",
+							"type": "string"
+						},
+						"startDate": {
+							"$ref": "commonSchemaV1_0.json#/definitions/startDate"
+						},
+						"annualSalary": {
+							"description": "Annual Salary",
+							"$ref": "commonSchemaV1_0.json#/definitions/amount"
+						},
+						"salaryRange": {
+							"description": "Salary Range",
+							"type": "object",
+							"properties": {
+								"salaryRangeFrom": {
+									"description": "Salary Range From",
+									"type": "number"
+								},
+								"salaryRangeTo": {
+									"description": "Salary Range To",
+									"type": "number"
+								}
+							},
+							"additionalProperties": false
+						},
+						"incomeFromRange": {
+							"description": "Income From Range",
+							"$ref": "commonSchemaV1_0.json#/definitions/amount"
+						},
+						"incomeToRange": {
+							"description": "Income To Range",
+							"$ref": "commonSchemaV1_0.json#/definitions/amount"
+						},
+						"estimatedNetworth": {
+							"description": "Estimated Networth",
+							"$ref": "commonSchemaV1_0.json#/definitions/amount"
+						},
+						"sourceOfIncome": {
+							"description": "Source of Income",
+							"type": "string"
+						},
+						"employmentPeriod": {
+							"description": "Period of Employment",
+							"$ref": "commonSchemaV1_0.json#/definitions/period"
+						}
+					},
+					"additionalProperties": false
+				},
+				"isResident": {
+					"description": "Indicates if party is residing in the country where he is a citizen",
+					"type": "boolean"
+				},
+				"nonResidentDate": {
+					"description": "Date when party's resident status becomes non-resident",
+					"type": "string",
+					"format": "date"
+				},
+				"isMinor": {
+					"description": "Indicates if party is a minor",
+					"type": "boolean"
+				},
+                "prefName": {
+					"description": "Party's preferred name",
+					"type": "string"
+				},
+				"maidenName": {
+					"description": "Party's Maiden Name",
+					"type": "string"
+				},
+				"motherMaidenName": {
+					"description": "Mother's Maiden Name",
+					"type": "string"
+				},
+				"isGSTResident": {
+					"description": "Indicates if the customer is residing in the country (for GST purposes)",
+					"type": "boolean"
+				}
+			},
+				"additionalProperties": false
+		}
+
+	}
+}

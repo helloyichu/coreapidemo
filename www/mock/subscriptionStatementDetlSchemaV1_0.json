@@ -1,0 +1,26 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Core schema Subscription Statement details",
+	"definitions": {
+		"statementDetl": {
+			"description": "Subscribed Statement details",
+			"type": "object",
+			"properties": {
+				"statementType": {
+					"description": "Type of Statement",
+					"type": "string"
+				},
+				"statementCategory": {
+					"description": "Statement category",
+					"type": "string"
+				},
+				"statementCycleDate": {
+					"description": "Statement Cycle Date",
+					"type": "string",
+					"format": "date"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

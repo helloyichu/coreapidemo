@@ -1,0 +1,15 @@
+<ion-content delegate-handle='booked-appointment-details' class="event-detail-container" has-bouncing="false" ng-show="showEventDetail" overflow-scroll="false">
+
+  <div class="list" ng-if="selectedDate.events">
+    <div class="item" ng-repeat="event in selectedDate.events">
+      <span ng-if="!event.allDay"><b>{{event.branchName}} > </b></span>
+      <span ng-if="!event.allDay">{{::event.startTime|date: 'HH:mm'}} - {{::event.endTime|date: 'HH:mm'}}</span>
+      <span ng-if="event.allDay">All day</span>
+    </div>
+  </div>
+  <table class="table table-bordered table-striped table-fixed event-detail-table">
+    <tr ng-if="!selectedDate.events">
+      <td class="no-event-label" ng-bind="::noEventsLabel"></td>
+    </tr>
+  </table>
+</ion-content>

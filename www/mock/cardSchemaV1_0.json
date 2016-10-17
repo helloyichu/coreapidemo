@@ -1,0 +1,159 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "http://www.xxx.com.sg/api/v1/parties",
+	"title": "DepositAccount",
+	"description": "Core schema for Card",
+	"definitions": {
+		"card": {
+			"description": "Card",
+			"type": "object",
+			"properties": {
+				"cardNumber": {
+					"description": "Card Number",
+					"type": "string"
+				},
+				"cardId": {
+					"$ref": "commonSchemaV1_0.json#/definitions/cardId"
+				},
+				"productType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/productType"
+				},
+				"productSubType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/productSubType"
+				},
+				"productCode": {
+					"$ref": "commonSchemaV1_0.json#/definitions/productCode"
+				},
+				"productDesc": {
+					"$ref": "commonSchemaV1_0.json#/definitions/productDesc"
+				},
+				"cardType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/cardType"
+				},
+				"cardBrand": {
+					"$ref": "commonSchemaV1_0.json#/definitions/cardBrand"
+				},
+				"cardStatusDetl": {
+					"description": "Card Status Detail",
+					"type": "object",
+					"properties": {
+						"cardStatus": {
+							"description": "Card Status",
+							"type": "string"
+						},
+						"lastUpdDate": {
+							"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+						}
+					},
+					"additionalProperties": false
+				}
+			},
+			"additionalProperties": false
+		},
+		"holdDetl": {
+			"description": "Details of hold",
+			"type": "object",
+			"properties": {
+				"holdType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/holdType"
+				},
+				"holdPurpose": {
+					"$ref": "commonSchemaV1_0.json#/definitions/holdPurpose"
+				},
+				"holdAmount": {
+					"$ref": "commonSchemaV1_0.json#/definitions/amount"
+				}
+			},
+			"additionalProperties": false
+		},
+		"termsAndCond": {
+			"description": "Terms and Condition document",
+			"type": "string"
+		},
+		"cardHolder": {
+			"description": "Card Holder",
+			"type": "object",
+			"properties": {
+				"partyId": {
+					"description": "party identifier",
+					"type": "string"
+				},
+				"partyInternalId": {
+					"description": "Party Internal Identifier",
+					"type": "object",
+					"oneOf": [
+						{
+							"$ref": "commonSchemaV1_0.json#/definitions/CISInternalId"
+						},
+						{
+							"$ref": "commonSchemaV1_0.json#/definitions/partyInternalId"
+						}
+					]
+				},
+				"isPrimaryHolder": {
+					"description": "Indicates if the party is Primary Holder",
+					"type": "boolean"
+				}
+			},
+			"additionalProperties": false
+		},
+		"statementDueAmount": {
+			"description": "Total amount due as shown in statement",
+			"type": "object",
+			"properties": {
+				"amount": {
+					"$ref": "commonSchemaV1_0.json#/definitions/amount"
+				}
+			},
+			"additionalProperties": false
+		},
+		"currentDueAmount": {
+			"description": "Current due amount",
+			"type": "object",
+			"properties": {
+				"amount": {
+					"$ref": "commonSchemaV1_0.json#/definitions/amount"
+				}
+			},
+			"additionalProperties": false
+		},
+		"minStatementPayAmount": {
+			"description": "Minimal amount for payment as shown in statement",
+			"type": "object",
+			"properties": {
+				"amount": {
+					"$ref": "commonSchemaV1_0.json#/definitions/amount"
+				}
+			},
+			"additionalProperties": false
+		},
+		"accountSignalDetl": {
+			"description": "Account signal Detail",
+			"type": "object",
+			"properties": {
+				"accountSignal": {
+					"description": "Account Signal",
+					"type": "string"
+				},
+				"accountSignalReason": {
+					"description": "Account Signal Reason",
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
+		"blockCodeDetl": {
+			"description": "Block Code Detail",
+			"type": "object",
+			"properties": {
+				"blockCode": {
+					"$ref": "commonSchemaV1_0.json#/definitions/blockCode"
+				},
+				"blockCodeDate": {
+					"$ref": "commonSchemaV1_0.json#/definitions/blockCodeDate"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

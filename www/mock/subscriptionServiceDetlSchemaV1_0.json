@@ -1,0 +1,29 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Core schema Subscription Service details",
+	"definitions": {
+		"serviceDetl": {
+			"description": "Subscription Service details",
+			"type": "object",
+			"properties": {
+				"serviceType": {
+					"description": "Type of Service",
+					"type": "array",
+					"items": [
+						{
+							"type": "object",
+							"properties": {
+								"serviceType": {
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						}
+					],
+					"additionalItems": false
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

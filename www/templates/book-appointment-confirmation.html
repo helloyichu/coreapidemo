@@ -1,0 +1,36 @@
+<ion-modal-view id='book-appointment-confirmation-popup'>
+  <ion-header-bar style="background-color: #387ef6;border-style: none;color: white;">
+    <h1 class="title" style="color: white;"> Confirm Appointment Details </span></h1>
+  </ion-header-bar>
+  <ion-content>
+
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">Selected Branch:</span>
+        <input type="text" style="background-color: white;" ng-disabled="true" ng-model="bookAppointmentConfirmationData.selectedBranch">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Appointment Date:</span>
+        <input type="text" style="background-color: white;" ng-disabled="true" ng-model="bookAppointmentConfirmationData.appointmentDate">
+      </label>
+      <div class="">
+        <span class="input-label" style="margin-left: 15px;width: 0;">Appointment Time Slot:</span>
+        <input type="text" style="margin-left: 15px;background-color: white;width: 100%;" ng-disabled="true" ng-model="bookAppointmentConfirmationData.appointmentTime">
+      </div>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Appointment Reason</span>
+        <input type="text" placeholder="State Your Reason for Appointment" ng-model="bookAppointmentConfirmationData.appointmentReason">
+      </label>
+    </div>
+
+    <ion-spinner ng-if="activateSpinner" style="position: fixed;top: 270px;left: 169px;z-index: 99;"></ion-spinner>
+
+  </ion-content>
+  <ion-footer-bar style="height:55px;">
+    <div class="row" style="padding: 0px;" >
+      <div class="col-50"><button class="button button-block button-positive" ng-disabled= "activateSpinner" ng-click="requestAppointment()">Ok</button></div>
+      <div class="col-50"><button class="button button-block" ng-disabled= "activateSpinner" ng-click="cancelAppointment()">Cancel</button></div></div>
+    </div>
+  </ion-footer-bar>
+</ion-modal-view>
+

@@ -1,0 +1,79 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Schema for additional information",
+	"definitions": {
+		"addnlInformation": {
+			"description": "Additional Details",
+			"type": "object",
+			"properties": {
+				"isStaff": {
+					"$ref": "commonSchemaV1_0.json#/definitions/isStaff"
+				},
+				"staffId": {
+					"description": "Staff Identifier",
+					"type": "string"
+				},
+				"IsRelatedToBank": {
+					"description": "Indicates if party is related to Bank's director or employee",
+					"type": "boolean"
+				},
+				"isDepositProtect": {
+					"description": "Indicates if party is excluded from deposit protection scheme",
+					"type": "boolean"
+				},
+				"localLanguage": {
+					"description": "Local language",
+					"$ref": "commonSchemaV1_0.json#/definitions/language"
+				},
+                "prefLanguage": {
+					"$ref": "commonSchemaV1_0.json#/definitions/language"
+				},
+				"domicileBranch": {
+					"description": "Party's home branch",
+					"type": "string"
+				},
+				"partyCreateDate": {
+					"description": "Date of party record creation",
+					"type": "string",
+					"format": "date"
+				},
+				"relationshipCreatedBy": {
+					"description": "Party record creation by",
+					"type": "string"
+				},
+				"lastUpdDate": {
+					"$ref": "commonSchemaV1_0.json#/definitions/lastUpdDate"
+				},
+				"docContent": {
+					"description": "Encoded content of document",
+					"type": "string"
+				},
+				"feeWaiverDetl": {
+					"description": "Fee waiver details",
+					"type": "object",
+					"properties": {
+						"isFeeWaived": {
+							"description": "Indicates if fee is waived for the party",
+							"type": "boolean"
+						},
+						"feeWaiverReason": {
+							"description": "Fee waiver reason",
+							"type": "string"
+						},
+						"feeWaiverExpiryDateTime": {
+							"description": "Fee waiver expiry date and time",
+							"type": "string",
+							"format": "date-time"
+						},
+						"isForRelationshipPricing": {
+							"description": "Indicates if it is for relationship pricing",
+							"type": "boolean"
+						}
+					},
+					"additionalProperties": false
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

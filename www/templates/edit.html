@@ -1,0 +1,202 @@
+<ion-modal-view id='edit-popup'>
+  <ion-header-bar>
+    <h1 class="title">Edit</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeEdit()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+
+
+    <!------------------------- Name Field----------------------->
+    <div ng-if="labelToEdit === 'Name:'">
+      <form ng-submit="">
+        <div class="list">
+          <label class="item item-input">
+                <span class="input-label" style="float:left;">Salutation:</span>
+                <select style="margin-top: 5px;" ng-model="buffer.parties.partyDetl.partyRetail.partyName.salutation">
+                  <option>MR</option>
+                  <option selected>MS</option>
+                  <option>MRS</option>
+                  <option>MDM</option>
+                </select>
+          </label>
+          <label class="item item-input">
+            <div style="padding: 5px;">
+              <span class="input-label" style="float:left;">{{labelToEdit}}</span>
+              <input type="text" style="width: 60%; padding: 0px; margin-top: 2px" ng-model="buffer.parties.partyDetl.partyRetail.partyName.fullName">
+            </div>
+          </label>
+          <div class="item">
+            <div class="row">
+              <div class="col-50"><button class="button button-block button-positive" ng-click="apply(parentIndex, index, buffer.parties.partyDetl.partyRetail.partyName.salutation + ' ' + buffer.parties.partyDetl.partyRetail.partyName.fullName)">Ok</button></div>
+              <div class="col-50"><button class="button button-block" ng-click="revert()">Cancel</button></div></div>
+            </div>
+        </div>
+      </form>
+    </div>
+    <!------------------------- Gender Field----------------------->
+    <div ng-if="labelToEdit === 'Gender:'">
+      <form ng-submit="">
+        <div class="list">
+          <label class="item item-input">
+              <div class="col-40 col-offset-33">
+                <span class="input-label" style="float:left;">{{labelToEdit}}</span>
+                <select style="margin-top: 5px;" ng-model="buffer.parties.partyDetl.partyRetail.gender">
+                  <option>M</option>
+                  <option selected>F</option>
+                </select>
+              </div>
+          </label>
+          <div class="item">
+            <div class="row">
+              <div class="col-50"><button class="button button-block button-positive" ng-click="apply(parentIndex, index, buffer.parties.partyDetl.partyRetail.gender)">Ok</button></div>
+              <div class="col-50"><button class="button button-block" ng-click="revert()">Cancel</button></div></div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!------------------------- Nationality Field----------------------->
+    <div ng-if="labelToEdit === 'Nationality:'">
+      <form ng-submit="">
+        <div class="list">
+          <label class="item item-input">
+            <div class="row" >
+              <div class="col-40 col-offset-30">
+                <span class="input-label" style="float:left;">{{labelToEdit}}</span>
+                <select style="margin-top: 5px;" ng-model="buffer.parties.partyDetl.partyRetail.nationalityDesc">
+                  <option ng-repeat="nationality in nationalityList track by $index">{{nationality}}</option>
+                </select>
+              </div>
+            </div>
+          </label>
+          <div class="item">
+            <div class="row">
+              <div class="col-50"><button class="button button-block button-positive" ng-click="apply(parentIndex, index, buffer.parties.partyDetl.partyRetail.nationalityDesc)">Ok</button></div>
+              <div class="col-50"><button class="button button-block" ng-click="revert()">Cancel</button></div></div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!------------------------- Race Field----------------------->
+    <div ng-if="labelToEdit === 'Race:'">
+      <form ng-submit="">
+        <div class="list">
+          <label class="item item-input">
+            <div class="row" >
+              <div class="col-40 col-offset-30">
+                <span class="input-label" style="float:left;">{{labelToEdit}}</span>
+                <select style="margin-top: 5px;" ng-model="buffer.parties.partyDetl.partyRetail.raceDesc">
+                  <option ng-repeat="race in raceList track by $index">{{race}}</option>
+                </select>
+              </div>
+            </div>
+          </label>
+          <div class="item">
+            <div class="row">
+              <div class="col-50"><button class="button button-block button-positive" ng-click="apply(parentIndex, index, buffer.parties.partyDetl.partyRetail.raceDesc)">Ok</button></div>
+              <div class="col-50"><button class="button button-block" ng-click="revert()">Cancel</button></div></div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!------------------------- Country Field----------------------->
+    <div ng-if="labelToEdit === 'Country of Residence:'">
+      <form ng-submit="">
+        <div class="list">
+          <label class="item item-input">
+            <div class="row" >
+              <div class="col-40 col-offset-30">
+                <span class="input-label" style="float:left;">{{labelToEdit}}</span>
+                <select style="margin-top: 5px;width:100%;" ng-model="buffer.parties.partyDetl.partyRetail.residenceCtryDesc">
+                  <option ng-repeat="country in countriesList track by $index">{{country}}</option>
+                </select>
+              </div>
+            </div>
+          </label>
+          <div class="item">
+            <div class="row">
+              <div class="col-50"><button class="button button-block button-positive" ng-click="apply(parentIndex, index, buffer.parties.partyDetl.partyRetail.residenceCtryDesc)">Ok</button></div>
+              <div class="col-50"><button class="button button-block" ng-click="revert()">Cancel</button></div></div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!------------------------- Contact Field----------------------->
+    <div ng-if="labelToEdit === 'Contact:'">
+      <form ng-submit="">
+        <div class="list">
+          <label class="item item-input">
+            <div style="width:100%;">
+              <span class="input-label" style="float:left;width:15%;">{{labelToEdit}}</span>
+              <input type="text" style="width:75%;" ng-model="buffer.parties.contacts.phoneDetl.item[0].phone.phoneNumber">
+            </div>
+          </label>
+          <div class="item">
+            <div class="row">
+              <div class="col-50"><button class="button button-block button-positive" ng-click="apply(parentIndex, index, buffer.parties.contacts.phoneDetl.item[0].phone.phoneNumber)">Ok</button></div>
+              <div class="col-50"><button class="button button-block" ng-click="revert()">Cancel</button></div></div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!------------------------- Email Field----------------------->
+    <div ng-if="labelToEdit === 'Email:'">
+      <form ng-submit="">
+        <div class="list">
+          <label class="item item-input">
+            <div style="width: 100%;">
+              <span class="input-label" style="float:left;width:10%;">{{labelToEdit}}</span>
+              <input type="text" style="width:80%;padding:0px;margin-top: 2px" ng-model="buffer.parties.contacts.emailDetl.item[0].emailAddressDetl.emailAddress">
+            </div>
+          </label>
+          <div class="item">
+            <div class="row">
+              <div class="col-50"><button class="button button-block button-positive" ng-click="apply(parentIndex, index, buffer.parties.contacts.emailDetl.item[0].emailAddressDetl.emailAddress)">Ok</button></div>
+              <div class="col-50"><button class="button button-block" ng-click="revert()">Cancel</button></div></div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!------------------------- Employer Field----------------------->
+    <div ng-if="labelToEdit === 'Employer:'">
+      <form ng-submit="">
+        <div class="list">
+          <label class="item item-input">
+            <div style="width: 100%;">
+              <span class="input-label" style="float:left;width:15%;">{{labelToEdit}}</span>
+              <input type="text" style="width: 80px;padding:0px;margin-top: 2px" ng-model="buffer.parties.partyDetl.partyRetail.employment.employerName">
+            </div>
+          </label>
+          <div class="item">
+            <div class="row">
+              <div class="col-50"><button class="button button-block button-positive" ng-click="apply(parentIndex, index, buffer.parties.partyDetl.partyRetail.employment.employerName)">Ok</button></div>
+              <div class="col-50"><button class="button button-block" ng-click="revert()">Cancel</button></div></div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!------------------------- Occupation Field----------------------->
+    <div ng-if="labelToEdit === 'Occupation:'">
+      <form ng-submit="">
+        <div class="list">
+          <label class="item item-input">
+            <div style="width: 100%;">
+              <span class="input-label" style="float:left;width:15%;">{{labelToEdit}}</span>
+              <input type="text" style="width: 80px;padding:0px;margin-top: 2px" ng-model="buffer.parties.partyDetl.partyRetail.employment.occupation">
+            </div>
+          </label>
+          <div class="item">
+            <div class="row">
+              <div class="col-50"><button class="button button-block button-positive" ng-click="apply(parentIndex, index, buffer.parties.partyDetl.partyRetail.employment.occupation)">Ok</button></div>
+              <div class="col-50"><button class="button button-block" ng-click="revert()">Cancel</button></div></div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-modal-view>

@@ -1,0 +1,66 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "Core schema of Corporate party",
+	"definitions": {
+		"partyCorporate": {
+			"description": "Demographic information pertaining only to Corporate customers",
+			"type": "object",
+			"properties": {
+				"partyName": {
+					"$ref": "commonSchemaV1_0.json#/definitions/partyName"
+				},
+				"partyType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/partyType"
+				},
+				"partyEntityType": {
+					"$ref": "commonSchemaV1_0.json#/definitions/partyEntityType"
+				},
+				"industry": {
+					"description": "Industry Code",
+					"type": "string"
+				},
+				"industryDesc": {
+					"description": "Industry Description",
+					"type": "string"
+				},
+				"incorporationDate": {
+					"$ref": "commonSchemaV1_0.json#/definitions/incorporationDate"
+				},
+				"constitution": {
+					"description": "Party's legal structure or constitution",
+					"type": "string"
+				},
+				"constitutionDesc": {
+					"description": "Legal structure description",
+					"type": "string"
+				},
+				"incorporationCtry": {
+					"$ref": "commonSchemaV1_0.json#/definitions/incorporationCtry"
+				},
+				"incorporationCtryDesc": {
+					"description": "Country of incorporation description",
+					"type": "string"
+				},
+				"operatingCtry": {
+					"description": "Country where party is operating in",
+					"type": "string",
+					"maxLength": 3,
+					"maxlength": 3
+				},
+				"operatingCtryDesc": {
+					"description": "Country of operation description",
+					"type": "string"
+				},
+				"businessNature": {
+					"description": "Nature of Business",
+					"type": "string"
+				},
+				"isGSTRegistered": {
+					"description": "Indicates if the party is registered within the country (for GST purposes)",
+					"type": "boolean"
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}

@@ -2,7 +2,7 @@
 
 .table > thead:first-child > tr:first-child > th, .table > thead:first-child > tr:first-child > td {
   border-top: 0;
-  background-color: #387ef6;
+  background-color: #be292e;
   border-style: none;
   color: white;
 
@@ -37,4 +37,93 @@
 .welcome-title.ng-enter {
   -webkit-animation: fadeInLeft 3s;
   animation: fadeInLeft 3s;
+}
+
+.background-content{
+    background: url(../img/home-page-bg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 63%!important;
+    margin: auto;
+    z-index: 2;
+    position: relative;
+    background-color: #BE292E;
+    overflow: hidden!important;
+}
+
+.zoom.ng-enter {
+  -webkit-animation: zoomInUp 5s;
+  animation: zoomInUp 5s;
+}
+
+.zoom.ng-enter.ng-enter-active {
+  -webkit-animation: tada 3s;
+  animation: tada 3s;
+}
+
+.slideRight.ng-enter {
+  -webkit-animation: slideInUp 0.5s;
+  animation: slideInUp 0.5s;
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../lib/ionic/fonts/icomoon.eot?wb3jj');
+  src:  url('../lib/ionic/fonts/icomoon.eot?wb3jj#iefix') format('embedded-opentype'),
+  url('../lib/ionic/fonts/icomoon.ttf?wb3jj') format('truetype'),
+  url('../lib/ionic/fonts/icomoon.woff?wb3jj') format('woff'),
+  url('../lib/ionic/fonts/icomoon.svg?wb3jj#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-dbs-icon:before {
+  content: "\e900";
+  color: #BE292E;
+}
+
+#login-spinner svg{
+  width: 100px;
+  height: 100px;
+}
+
+#callback-spinner svg{
+  width: 300px;
+  height: 300px;
+}
+
+#add-account i{
+  width: 50px;
+  height: 50px;
+  color: whitesmoke;
+}
+
+#add-account i:before {
+  font-size: 40px;
+}
+
+#main-nav ion-header-bar{
+  background-color: #be292e;
+  color: whitesmoke;
+}
+
+#main-nav .bar.bar-stable .title {
+  color: whitesmoke;
 }

@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'starter.directives', 'starter.filters', 'offClick', 'ionic-datepicker', 'ui.rCalendar', 'ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'starter.directives', 'starter.filters', 'offClick', 'ionic-datepicker', 'ui.rCalendar', 'ngCordova', 'ngAnimate', 'nvd3ChartDirectives'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -24,7 +24,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-
+    .state('callback', {
+      url: '/callback',
+      templateUrl: 'templates/callback.html',
+      controller: 'CallbackCtrl'
+    })
     .state('app', {
     url: '/app',
     templateUrl: 'templates/menu.html',
@@ -144,4 +148,13 @@ var getDistance = function(point1, point2){
 
   return Math.sqrt(((point1.lat - point2.lat)*(point1.lat - point2.lat) + (point1.lng - point2.lng)*(point1.lng - point2.lng)));
 
+}
+
+var getRandomColor= function() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++ ) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }

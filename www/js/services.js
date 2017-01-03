@@ -1706,5 +1706,30 @@ angular.module('starter.services', [])
       }
     }
 
-  });
+  })
+  .factory('OAuth', function($ionicPlatform, $http, $q, $timeout){
+
+  return {
+
+    signInWithiBanking: function (toNumber) {
+
+      var defer= $q.defer();
+
+      /*var req = {
+        method: 'POST',
+        url: 'http://127.0.0.1:3001/api/sendMessage?to=' + toNumber
+      }
+
+      $http(req).then(function(response){
+        defer.resolve(response.data);
+      }, function(response){
+        defer.reject(response);
+      });*/
+
+      return defer.promise;
+
+    }
+  }
+
+});
 

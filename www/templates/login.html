@@ -1,12 +1,17 @@
 <ion-modal-view>
-  <ion-header-bar>
+  <!--<ion-header-bar>
     <h1 class="title">Login</h1>
     <div class="buttons">
-      <button class="button button-positive" ng-click="openAddAccountDLG()">Register</button>
+      <button class="button button-positive" ng-click="log()">Register</button>
     </div>
-  </ion-header-bar>
-  <ion-content>
-    <form ng-submit="doLogin()">
+  </ion-header-bar>-->
+  <ion-content scroll="false" overflow-scroll="false" has-bouncing="false" style="background-color: #BE292E; height: 100%">
+    <div class="row">
+      <div class="col-33 col-offset-33" style="text-align:center; position:fixed;z-index: 99; top:284px;">
+        <ion-spinner icon="android" id="login-spinner" ng-if="activateSpinner"></ion-spinner>
+      </div>
+    </div>
+    <div ng-if="animateForm" class="slideRight" style="position:absolute;z-index:99;bottom:0px;width:100%">
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Username</span>
@@ -16,16 +21,26 @@
           <span class="input-label">Password</span>
           <input type="password" ng-model="loginData.password">
         </label>
-        <label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
+        <label class="item" style="padding-bottom: 0px;">
+          <button class="button button-block button-positive" ng-click="doLogin()">Log in</button>
+        </label>
+        <label class="item" style="padding-top: 0px;border-top-style: none;">
+          <div class="row">
+            <hr style="width: 35%; border-color:#fff;"/> <span style="float:left; color: #b7afaf; font-size: 12px"> Not a User?</span> <hr style="width: 35%; border-color:#fff;"/>
+          </div>
+          <div class="row">
+            <button style="width:25%; background-color: whitesmoke;border-color: black;color: black" class="button button-block button-positive" ng-click="openAddAccountDLG()">Register</button>
+            <span style="float: left;width: 10%;font-size: 20px;color: #878198;margin-left: 19px;margin-top: 16px;margin-right: 5px;">Or</span>
+            <button style="font-size:12px; width:55%; border-color: black ;background-color: whitesmoke; color: black;" class="button button-block button-positive" ng-click="SignInWithIBanking()"><i class="icon-dbs-icon" style="font-size: 25px;margin-right: 4px;float: left;margin-top: 8px;"></i><b>Sign in with iBanking</b></button>
+          </div>
         </label>
       </div>
-    </form>
-    <div class="row">
-      <div class="col-33 col-offset-33" style="text-align:center">
-        <ion-spinner ng-if="activateSpinner"></ion-spinner>
-      </div>
     </div>
+
+    <!--Background Logo-->
+    <div ng-if="true" id="background-logo" class="background-content zoom">
+    </div>
+
 
   </ion-content>
 </ion-modal-view>

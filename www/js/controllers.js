@@ -1,7 +1,7 @@
 
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state, $http, $ionicSlideBoxDelegate, $ionicPopup, $q, NewUserRequestTemplate, NationalityCountriesRaceList, ionicDatePicker, $ionicPlatform, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaCamera, partyData, productData) {
+.controller('AppCtrl', function($ionicBackdrop, $scope, $ionicModal, $timeout, $state, $http, $ionicSlideBoxDelegate, $ionicPopup, $q, NewUserRequestTemplate, NationalityCountriesRaceList, ionicDatePicker, $ionicPlatform, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaCamera, partyData, productData) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -9,6 +9,10 @@ angular.module('starter.controllers', [])
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+
+  $timeout(function () {
+    $scope.animateForm= true;
+  },4500);
 
   //initialize components
   console.log("===========initializing components===========")
@@ -55,6 +59,10 @@ angular.module('starter.controllers', [])
         console.log("current orientation:", $scope.deviceOrientation );
       });
   });
+
+  $scope.log= function() {
+    console.log($scope);
+  }
 
   var watchPosition= function () {
     var watch= $cordovaGeolocation.watchPosition({frequency: 500, timeout : 10000, enableHighAccuracy: true});
@@ -113,7 +121,10 @@ angular.module('starter.controllers', [])
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
+    scope: $scope,
+    animation: 'slide-in-right',
+    backdropClickToClose: false,
+    hardwareBackButtonClose: false
   }).then(function(modal) {
     $scope.modal = modal;
     $scope.modal.show();
@@ -145,6 +156,7 @@ angular.module('starter.controllers', [])
 
     console.log('Doing login', $scope.loginData);
     $scope.activateSpinner= true;
+    $ionicBackdrop.retain();
 
     //'apikey':  'da8514e7-f8a4-49d2-ac96-5da80a10da53',
     //'uuid'  : 'STest20160719_K00001'
@@ -215,6 +227,7 @@ angular.module('starter.controllers', [])
     $timeout(function() {
       $scope.modal.hide();
       $scope.activateSpinner= false;
+      $ionicBackdrop.release();
       $state.go('app.playlists');
     }, 1000);
   };
@@ -275,6 +288,8 @@ angular.module('starter.controllers', [])
   $scope.animatingWelcomePage=false;
 
   $scope.openAddAccountDLG = function() {
+
+    console.log("----------------Opening a New Account------------------");
 
     NewUserRequestTemplate.getTemplate().then(function (data) {
       $scope.newUserDetails= angular.copy(data);
@@ -707,7 +722,6 @@ angular.module('starter.controllers', [])
   //----------------------Configurable scope variables---------------------
   $scope.addAccountDLGTitle= "Add An Account";
 
-
   $scope.addAccountDetails= {};
   $ionicModal.fromTemplateUrl('templates/add-account.html', {
     scope: $scope
@@ -794,6 +808,64 @@ angular.module('starter.controllers', [])
     });
 
     return defer.promise;
+  }
+
+  //-------------------------Utility functions for initializing donutChart-------------------
+
+  $scope.donutChartData= [];
+  var donutChartColorData= [];
+
+
+  var convertProductlistToDonutChartData= function () {
+
+    var productList= angular.copy($scope.playlists.partiesProducts.productsList.item);
+
+    for(var i = 0; i< productList.length; i++) {
+      var obj = {};
+      obj.productId = productList[i].depositAccount.productDesc;
+      obj.frequency= 0;
+      obj.objects= [];
+      var objCode= productList[i].depositAccount.productCode;
+
+      for (var j = i; j < productList.length; j++)
+        if(objCode === productList[j].depositAccount.productCode){
+          obj.frequency++;
+          obj.objects.push(productList.splice(j,1).depositAccount);
+        }
+      $scope.donutChartData.push(obj);
+    }
+
+    for(var i = 0; i< $scope.donutChartData.length; i++) {
+      donutChartColorData.push(getRandomColor());
+    }
+  }
+
+  convertProductlistToDonutChartData();
+
+  $scope.donutColorFunction = function() {
+    return function(d, i) {
+      return donutChartColorData[i];
+    };
+  }
+
+  $scope.xFunction= function () {
+    return function(d){
+      return d.productId;
+    };
+  }
+
+  $scope.yFunction= function () {
+
+    return function(d){
+      return d.frequency;
+    };
+
+  }
+
+  //---------------------------Sign in With iBanking----------------------------------------
+
+  var SignInWithIBanking= function () {
+
   }
 
 
@@ -1718,6 +1790,45 @@ angular.module('starter.controllers', [])
   $scope.onViewTitleChanged= function(title){
     $scope.viewTitle= title;
   }
+
+
+}).controller('CallbackCtrl', function($state, $ionicPlatform, $cordovaInAppBrowser, $window, $scope, $ionicScrollDelegate) {
+
+  $ionicPlatform.ready(function(){
+
+    var isDevice= window.cordova;
+    var authCode= '';
+
+    if(isDevice){
+      /* Add Code Callback for $cordovaInAppBrowser*/
+
+    }
+    else{
+
+      var url= $window.location.href;
+      //http://localhost:8100/#/callback?code=123456
+
+      if(url.includes('http://localhost:8100/#/')){
+
+        console.log('redirecting back to App');
+
+        if($window.location.hash.split('/')[1].split('?').length > 1){
+          var queryParam= $window.location.hash.split('/')[1].split('?')[1].split('&');
+          angular.forEach(queryParam, function(value, key){
+            if (value.includes('code')){
+              authCode= value.split('=')[1];
+            }
+          });
+
+          console.log('Returned AuthCode is: ', authCode);
+        }
+      }
+
+    }
+
+    $state.go('app.playlists');
+
+  });
 
 
 });

@@ -1,15 +1,36 @@
 <ion-view view-title="Accounts">
-  <ion-nav-buttons side="secondary">
+  <!--<ion-nav-buttons side="secondary">
     <button class="button" ng-click="openAddAccountDLG()" >
       <i class="icon ion-plus"></i>
     </button>
-  </ion-nav-buttons>
+  </ion-nav-buttons>-->
 
   <ion-content>
+
     <ion-list>
+      <ion-item style="height: 300px;" >
+        <nvd3-pie-chart
+          data="donutChartData"
+          color="donutColorFunction()"
+          id="donutChart"
+          x="xFunction()"
+          y="yFunction()"
+          donut="true"
+          height="300"
+          showlabels="true"
+          donut-labels-outside="true"
+          nodata="No Accounts Found">
+          <svg height="150"></svg>
+        </nvd3-pie-chart>
+      </ion-item>
       <ion-item ng-repeat="product in playlists.partiesProducts.productsList.item" ng-if="product.depositAccount" href="#/app/playlists/{{product.depositAccount.accountId}}">
         {{product.depositAccount.productDesc}}
       </ion-item>
     </ion-list>
   </ion-content>
+
+  <button id="add-account" style="border-radius: 50%;position: fixed;background-color: #BE292E;bottom: 5%;right: 10%;min-width: 75px;height: 75px;box-shadow: 1px 3px 5px;" class="button" ng-click="openAddAccountDLG()" >
+    <i class="icon ion-plus"></i>
+  </button>
+
 </ion-view>
